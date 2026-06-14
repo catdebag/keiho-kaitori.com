@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>金・プラチナ・宝飾品の買取なら株式会社KEIHO｜関東中心に全国の催事会場で開催</title>
+  <meta name="description" content="株式会社KEIHOは金・プラチナ・ダイヤモンド・時計・ブランド品などを催事会場でその場査定・即日現金払いでお買取りします。関東中心に全国対応。">
+  <meta property="og:title" content="株式会社KEIHO｜催事買取専門">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:       #1A5C3A;
+      --green-dark:  #123d27;
+      --green-mid:   #246b45;
+      --green-soft:  #e8f2ec;
+      --green-pale:  #f2f8f4;
+      --gold:        #B8922A;
+      --gold-light:  #D4AA50;
+      --gold-pale:   #f7efd3;
+      --cream:       #FAFAF6;
+      --white:       #FFFFFF;
+      --text:        #1e2b22;
+      --text-mid:    #4a5e52;
+      --text-light:  #7a8f82;
+      --border:      #d8e6dc;
+    }
+
+    /*
+     * ============================================================
+     *  画像差し替えガイド
+     * ============================================================
+     *
+     *  【ロゴ画像】
+     *  1. ロゴ画像（SVG or PNG透過）を images/logo.svg などに配置
+     *  2. HTML の <div class="logo-badge">〜</div> 部分を
+     *     <img src="images/logo.svg" alt="株式会社KEIHO" class="logo-img"> に置換
+     *
+     *  【メインビジュアル（ヒーロー背景）】
+     *  1. 画像を images/hero.jpg などに配置
+     *  2. 下の .hero のコメントアウト部分を外してファイル名を修正するだけでOK
+     *
+     * ============================================================
+     */
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== HEADER ========== */
+    /* ロゴ画像（差し替え後に使用） */
+    .logo-img {
+      height: 44px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    /* 画像が未配置の間は文字ロゴを表示 */
+    .logo-fallback {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 2px solid var(--green-soft);
+      box-shadow: 0 2px 16px rgba(26,92,58,0.07);
+    }
+    .hd-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 28px;
+      height: 72px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-badge {
+      width: 44px; height: 44px; background: var(--green); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+    }
+    .logo-badge::after {
+      content: ''; position: absolute; top: -6px; right: -6px;
+      width: 20px; height: 20px; background: var(--gold); border-radius: 50%; opacity: 0.7;
+    }
+    .logo-badge span {
+      font-family: 'Noto Serif JP', serif; font-size: 24px; font-weight: 700;
+      color: var(--white); position: relative; z-index: 1;
+    }
+    .logo-words { line-height: 1.2; }
+    .logo-words .en { font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: 1px; }
+    .logo-words .ja { font-size: 10px; color: var(--text-light); }
+
+    .hd-right { display: flex; align-items: center; gap: 18px; }
+    .hd-tel { display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--green); }
+    .hd-tel i { color: var(--gold); font-size: 15px; }
+    .hd-tel .tl { font-size: 9px; color: var(--text-light); display: block; }
+    .hd-tel .num { font-size: 19px; font-weight: 700; line-height: 1.1; }
+    .btn-hd {
+      background: var(--green); color: var(--white); padding: 10px 22px;
+      border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none;
+      transition: background .2s; white-space: nowrap;
+    }
+    .btn-hd:hover { background: var(--green-mid); }
+
+    .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .ham span { display: block; width: 26px; height: 2px; background: var(--green); border-radius: 2px; transition: all .3s; }
+    .ham.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .ham.open span:nth-child(2) { opacity: 0; }
+    .ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .sp-nav { display: none; background: var(--green-pale); max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .sp-nav.open { max-height: 500px; }
+    .sp-nav a { display: block; padding: 14px 28px; color: var(--green); font-size: 14px; font-weight: 500; border-bottom: 1px solid var(--border); text-decoration: none; }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: var(--green); position: relative; overflow: hidden;
+      min-height: 76vh; display: flex; align-items: center;
+    }
+
+    /* -------------------------------------------------------
+     * メインビジュアル（背景画像）
+     * images/hero.jpg を配置すると自動で背景に表示されます。
+     * .hero-bg-img は <img> タグで差し替える方式です（後述）。
+     * ------------------------------------------------------- */
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      /* 画像使用時: 深緑グラデーションで文字を読みやすくするオーバーレイ */
+      background: linear-gradient(
+        105deg,
+        rgba(18, 61, 39, 0.82) 0%,
+        rgba(26, 92, 58, 0.60) 55%,
+        rgba(18, 61, 39, 0.50) 100%
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero::after {
+      content: ''; position: absolute; right: 80px; top: -140px;
+      width: 380px; height: 380px; border-radius: 50%;
+      background: rgba(184,146,42,0.10); pointer-events: none;
+      z-index: 0;
+    }
+    .hero-inner {
+      max-width: 1160px; margin: 0 auto; padding: 80px 28px;
+      position: relative; z-index: 1; width: 100%;
+      display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(212,170,80,0.18); border: 1px solid rgba(212,170,80,0.45);
+      color: var(--gold-light); font-size: 11px; letter-spacing: 2.5px;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif; font-size: clamp(30px, 4.5vw, 52px);
+      font-weight: 700; color: var(--white); line-height: 1.45; margin-bottom: 20px;
+    }
+    .hero h1 .hl { color: var(--gold-light); border-bottom: 2px solid rgba(212,170,80,0.5); padding-bottom: 2px; }
+    .hero-sub { font-size: 15px; color: rgba(255,255,255,0.8); line-height: 1.9; margin-bottom: 36px; max-width: 500px; }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px; background: var(--gold);
+      color: var(--white); padding: 15px 30px; border-radius: 8px; font-weight: 700;
+      font-size: 15px; text-decoration: none; transition: all .2s;
+      box-shadow: 0 4px 18px rgba(184,146,42,0.4);
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline-w {
+      display: inline-flex; align-items: center; gap: 10px; background: transparent;
+      color: var(--white); padding: 14px 26px; border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.4); font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: all .2s;
+    }
+    .btn-outline-w:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+
+    .hero-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+    .chip {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 100px; color: rgba(255,255,255,0.9); font-size: 12px; padding: 6px 14px;
+    }
+    .chip i { color: var(--gold-light); font-size: 11px; }
+
+    .hero-card {
+      background: var(--white); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.18);
+    }
+    .hero-card-top { background: var(--green-soft); padding: 24px 28px 20px; text-align: center; }
+    .hero-card-top h3 { font-size: 14px; font-weight: 700; color: var(--green); margin-bottom: 14px; }
+    .hero-card-tel {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 26px; font-weight: 700; color: var(--green); text-decoration: none; margin-bottom: 6px;
+    }
+    .hero-card-tel i { color: var(--gold); font-size: 20px; }
+    .hero-card-note { font-size: 11px; color: var(--text-light); }
+    .hero-card-body { padding: 20px 24px; }
+    .hero-card-list li {
+      display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-mid);
+      padding: 9px 0; border-bottom: 1px solid var(--border); list-style: none;
+    }
+    .hero-card-list li:last-child { border-bottom: none; }
+    .hero-card-list i { color: var(--green); margin-top: 2px; font-size: 13px; flex-shrink: 0; }
+
+    /* ========== SECTION BASE ========== */
+    section { padding: 80px 28px; }
+    .sec-in { max-width: 1160px; margin: 0 auto; }
+    .sec-head { margin-bottom: 52px; }
+    .sec-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--green); margin-bottom: 10px;
+    }
+    .sec-tag::before { content: ''; display: block; width: 28px; height: 2px; background: var(--gold); }
+    .sec-title {
+      font-family: 'Noto Serif JP', serif; font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700; color: var(--green-dark); line-height: 1.4; margin-bottom: 14px;
+    }
+    .sec-desc { font-size: 15px; color: var(--text-mid); line-height: 1.85; max-width: 580px; }
+
+    /* ========== ITEMS ========== */
+    #items { background: var(--cream); }
+    .items-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+    .item-card {
+      background: var(--white); border: 1.5px solid var(--border); border-radius: 12px;
+      padding: 28px 18px 22px; text-align: center; transition: all .25s;
+      position: relative; overflow: hidden;
+    }
+    .item-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--gold));
+      transform: scaleX(0); transform-origin: left; transition: transform .3s;
+    }
+    .item-card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(26,92,58,0.1); }
+    .item-card:hover::before { transform: scaleX(1); }
+    .item-ico {
+      width: 54px; height: 54px; background: var(--green-soft); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px; transition: background .25s;
+    }
+    .item-card:hover .item-ico { background: var(--green); }
+    .item-ico i { color: var(--green); font-size: 20px; transition: color .25s; }
+    .item-ico img { width: 28px; height: 28px; object-fit: contain; display: block; transition: filter .25s; }
+    .item-card:hover .item-ico i { color: var(--gold-light); }
+    .item-card:hover .item-ico img { filter: brightness(0) invert(1); }
+    .item-card h3 { font-size: 14px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+    .item-card p { font-size: 11.5px; color: var(--text-light); line-height: 1.75; }
+    .items-note {
+      background: var(--green-soft); border-radius: 10px; padding: 18px 24px;
+      display: flex; align-items: flex-start; gap: 14px; font-size: 14px;
+      color: var(--text-mid); border: 1px solid var(--border);
+    }
+    .items-note i { color: var(--green); font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+    .items-note strong { color: var(--green-dark); }
+
+    /* ========== FLOW ========== */
+    #flow { background: var(--green-pale); }
+    .flow-row { display: grid; grid-template-columns: repeat(4, 1fr); position: relative; gap: 12px; }
+    .flow-row::before {
+      content: ''; position: absolute; top: 52px;
+      left: calc(12.5% + 28px); right: calc(12.5% + 28px);
+      height: 2px; background: linear-gradient(90deg, var(--green), var(--gold)); z-index: 0;
+    }
+    .flow-card {
+      position: relative; z-index: 1; background: var(--white); border-radius: 14px;
+      padding: 30px 18px 24px; text-align: center; border: 1.5px solid var(--border);
+      box-shadow: 0 2px 12px rgba(26,92,58,0.06);
+    }
+    .flow-num-wrap {
+      width: 56px; height: 56px; border-radius: 50%; background: var(--green);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      margin: 0 auto 20px; box-shadow: 0 0 0 6px var(--green-pale);
+    }
+    .flow-num-wrap .step-label { font-size: 8px; letter-spacing: 1px; color: rgba(255,255,255,0.7); }
+    .flow-num-wrap .step-num { font-size: 20px; font-weight: 700; color: var(--white); line-height: 1; }
+    .flow-card h3 { font-size: 15px; font-weight: 700; color: var(--green-dark); margin-bottom: 10px; }
+    .flow-card p { font-size: 12px; color: var(--text-mid); line-height: 1.75; }
+    .flow-note {
+      margin-top: 28px; padding: 14px 20px; border-left: 3px solid var(--gold);
+      background: var(--gold-pale); border-radius: 0 6px 6px 0;
+      font-size: 13px; color: var(--text-mid);
+    }
+    .flow-note strong { color: var(--green-dark); }
+
+    /* ========== REASONS ========== */
+    #reasons { background: var(--cream); }
+    .reasons-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .reason-card {
+      background: var(--white); border-radius: 14px; padding: 32px 28px;
+      display: flex; gap: 22px; align-items: flex-start;
+      border: 1.5px solid var(--border); transition: all .25s;
+    }
+    .reason-card:hover { border-color: var(--green); box-shadow: 0 8px 28px rgba(26,92,58,0.09); }
+    .reason-icon {
+      width: 52px; height: 52px; background: var(--green-soft); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .reason-icon i { color: var(--green); font-size: 20px; }
+    .reason-body h3 { font-size: 16px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+    .reason-body p { font-size: 13px; color: var(--text-mid); line-height: 1.8; }
+
+    /* ========== SAIJI ========== */
+    #saiji { background: var(--green-pale); }
+    .saiji-wrap { display: grid; grid-template-columns: 1fr 360px; gap: 48px; align-items: start; }
+    .saiji-text p { font-size: 14px; color: var(--text-mid); line-height: 1.95; margin-bottom: 18px; }
+    .promise-box { background: var(--white); border-radius: 14px; padding: 28px 24px; border: 1.5px solid var(--border); }
+    .promise-box h4 {
+      font-size: 14px; font-weight: 700; color: var(--green-dark); margin-bottom: 18px;
+      padding-bottom: 14px; border-bottom: 2px solid var(--green-soft);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .promise-box h4 i { color: var(--gold); }
+    .promise-item {
+      display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text);
+      padding: 9px 0; border-bottom: 1px solid var(--border);
+    }
+    .promise-item:last-child { border-bottom: none; }
+    .promise-item i.ok { color: var(--green); font-size: 14px; margin-top: 2px; }
+    .promise-item i.warn { color: #d4831a; font-size: 14px; margin-top: 2px; }
+    .ico-ok { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+    .ico-warn { color: #d4831a; flex-shrink: 0; margin-top: 2px; }
+
+    /* ========== FAQ ========== */
+    #faq { background: var(--cream); }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { border-radius: 10px; border: 1.5px solid var(--border); background: var(--white); overflow: hidden; }
+    .faq-btn {
+      width: 100%; background: none; border: none; cursor: pointer; padding: 18px 24px;
+      display: flex; align-items: center; gap: 14px; text-align: left;
+      font-size: 14px; font-weight: 700; color: var(--green-dark); transition: background .2s;
+    }
+    .faq-btn:hover { background: var(--green-pale); }
+    .faq-q-badge {
+      width: 30px; height: 30px; background: var(--green); color: var(--white);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; flex-shrink: 0;
+    }
+    .faq-btn .arr { margin-left: auto; color: var(--green); transition: transform .3s; flex-shrink: 0; }
+    .faq-item.open .arr { transform: rotate(180deg); }
+    .faq-ans { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+    .faq-item.open .faq-ans { max-height: 300px; }
+    .faq-ans-in { padding: 4px 24px 18px 68px; font-size: 13px; color: var(--text-mid); line-height: 1.85; }
+
+    /* ========== COMPANY ========== */
+    #company { background: var(--green-pale); }
+    .co-table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+      background: var(--white); border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(26,92,58,0.06);
+    }
+    .co-table tr { border-bottom: 1px solid var(--border); }
+    .co-table tr:last-child { border-bottom: none; }
+    .co-table th {
+      width: 170px; padding: 18px 20px; background: var(--green-soft);
+      font-weight: 700; color: var(--green-dark); text-align: left;
+      vertical-align: top; white-space: nowrap; font-size: 13px;
+    }
+    .co-table td { padding: 18px 24px; color: var(--text); line-height: 1.7; }
+    .co-badge {
+      display: inline-block; background: var(--gold-pale); border: 1px solid var(--gold);
+      color: var(--green-dark); font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px; margin-left: 8px; vertical-align: middle;
+    }
+
+    /* ========== MESSAGE ========== */
+    #message { background: var(--cream); }
+    .msg-wrap {
+      max-width: 700px; margin: 0 auto; background: var(--white);
+      border-radius: 16px; padding: 44px 52px; border: 1.5px solid var(--border); position: relative;
+    }
+    .msg-deco {
+      font-size: 80px; color: var(--green-soft); font-family: serif;
+      line-height: 1; position: absolute; top: 16px; left: 24px;
+    }
+    .msg-wrap p { position: relative; font-size: 14px; line-height: 2.1; color: var(--text-mid); margin-bottom: 16px; }
+    .msg-sign {
+      margin-top: 24px; text-align: right; font-size: 13px; font-weight: 700;
+      color: var(--green-dark); border-top: 1px solid var(--border); padding-top: 16px;
+    }
+
+    /* ========== CONTACT ========== */
+    #contact { background: var(--green); position: relative; overflow: hidden; }
+    #contact::before {
+      content: ''; position: absolute; right: -120px; bottom: -180px;
+      width: 480px; height: 480px; border-radius: 50%;
+      background: rgba(255,255,255,0.04); pointer-events: none;
+    }
+    #contact .sec-tag { color: var(--gold-light); }
+    #contact .sec-tag::before { background: var(--gold); }
+    #contact .sec-title { color: var(--white); }
+    #contact .sec-desc { color: rgba(255,255,255,0.75); }
+
+    .form-card {
+      max-width: 660px; margin: 0 auto; background: var(--white);
+      border-radius: 16px; padding: 40px 44px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.16);
+    }
+    .tel-box {
+      background: var(--green-pale); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 20px 24px; text-align: center; margin-bottom: 28px;
+    }
+    .tel-box p { font-size: 12px; color: var(--text-light); margin-bottom: 8px; }
+    .tel-box a { display: inline-flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 700; color: var(--green); text-decoration: none; }
+    .tel-box a i { color: var(--gold); }
+    .tel-box .sub { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+    .or-div { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .or-div::before, .or-div::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .or-div span { font-size: 12px; color: var(--text-light); white-space: nowrap; }
+    .fg { margin-bottom: 18px; }
+    .fg label { display: block; font-size: 13px; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
+    .fg label .req { color: #c0392b; font-size: 10px; margin-left: 4px; }
+    .fg input, .fg textarea {
+      width: 100%; padding: 12px 14px; border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 14px; font-family: inherit; color: var(--text);
+      background: var(--white); transition: border-color .2s;
+    }
+    .fg input:focus, .fg textarea:focus { outline: none; border-color: var(--green); }
+    .fg textarea { min-height: 118px; resize: vertical; }
+    .form-notice {
+      background: var(--green-soft); border-radius: 8px; padding: 12px 16px;
+      font-size: 12px; color: var(--text-mid); margin-bottom: 18px; display: flex; gap: 8px;
+    }
+    .form-notice i { color: var(--green); flex-shrink: 0; margin-top: 2px; }
+    .btn-submit {
+      width: 100%; background: var(--green); color: var(--white); border: none;
+      padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 700;
+      font-family: inherit; cursor: pointer; transition: background .2s;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .btn-submit:hover { background: var(--green-dark); }
+    .thanks { display: none; text-align: center; padding: 40px 20px; }
+    .thanks i { font-size: 44px; color: var(--green); margin-bottom: 14px; }
+    .thanks h3 { font-size: 18px; color: var(--green-dark); margin-bottom: 8px; }
+    .thanks p { font-size: 13px; color: var(--text-light); }
+
+    /* ========== FOOTER ========== */
+    footer { background: var(--green-dark); color: rgba(255,255,255,0.7); padding: 52px 28px 28px; }
+    .ft-in { max-width: 1160px; margin: 0 auto; }
+    .ft-top {
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px;
+      padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px;
+    }
+    .ft-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .ft-logo .mk {
+      width: 38px; height: 38px; background: var(--gold); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ft-logo .mk span { font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 700; color: var(--white); }
+    .ft-logo .nm { font-size: 15px; font-weight: 700; color: var(--white); }
+    .ft-info p { font-size: 12px; line-height: 2; }
+    .ft-info a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    .ft-col h4 { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .ft-col a { display: block; color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; margin-bottom: 10px; transition: color .2s; }
+    .ft-col a:hover { color: var(--gold-light); }
+    .ft-legal { font-size: 11px; line-height: 1.9; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
+    .ft-copy { text-align: center; font-size: 11px; color: rgba(255,255,255,0.25); padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+
+    /* ========== FLOAT SP ========== */
+    .sp-float { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 900; background: var(--green-dark); padding: 10px 14px; gap: 10px; }
+    .sp-float a { flex: 1; padding: 12px 8px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .sp-float .sp-tel { background: var(--white); color: var(--green); }
+    .sp-float .sp-form { background: var(--gold); color: var(--white); }
+
+    /* ========== ANIMATION ========== */
+    .fu { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+    .fu.vis { opacity: 1; transform: none; }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .items-grid { grid-template-columns: repeat(2, 1fr); }
+      .flow-row { grid-template-columns: repeat(2, 1fr); }
+      .flow-row::before { display: none; }
+      .reasons-grid { grid-template-columns: 1fr; }
+      .saiji-wrap { grid-template-columns: 1fr; }
+      .ft-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .hd-tel .num { font-size: 15px; }
+      .btn-hd { display: none; }
+      .ham { display: flex; }
+      .sp-nav { display: block; }
+      section { padding: 60px 20px; }
+      .hero { min-height: auto; }
+      .hero-inner { padding: 60px 20px 64px; }
+      .items-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .flow-row { grid-template-columns: 1fr; }
+      .ft-top { grid-template-columns: 1fr; gap: 24px; }
+      .form-card { padding: 28px 20px; }
+      .msg-wrap { padding: 32px 24px; }
+      .sp-float { display: flex; }
+      footer { padding-bottom: 80px; }
+    }
+    @media (min-width: 641px) and (max-width: 900px) {
+      .hd-tel { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hd-inner">
+    <a href="#" class="logo">
+      <!--
+        ===================================================
+        ロゴ画像 差し替えガイド
+
+        【フォルダ構成】
+          keiho/
+          ├── index.html
+          └── images/
+              └── logo.png   ← ここに画像を置く
+
+        【対応フォーマット】
+          SVG（推奨）/ PNG透過
+          推奨サイズ: 高さ 44px 程度・横幅は自動調整
+
+        【差し替え手順】
+          1. images/ フォルダ（hero.jpg と同じ場所）に
+             ロゴ画像を入れる
+          2. 下の src="images/logo.png" のファイル名を合わせる
+             例: src="images/keiho_logo.svg"
+
+        ※ ロゴ画像が用意できるまでは
+           「KEIHO」の文字ロゴが代わりに表示されます。
+        ===================================================
+      -->
+      <img src="images/logo.png" alt="株式会社KEIHO" class="logo-img"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="logo-fallback">
+        <div class="logo-badge"><span>K</span></div>
+        <div class="logo-words">
+          <div class="en">KEIHO</div>
+          <div class="ja">株式会社 KEIHO</div>
+        </div>
+      </div>
+    </a>
+    <div class="hd-right">
+      <a href="tel:09057037929" class="hd-tel">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold);flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l1.27-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+        <div><span class="tl">無料相談・お問い合わせ</span><span class="num">090-5703-7929</span></div>
+      </a>
+      <a href="#contact" class="btn-hd">お問い合わせ</a>
+      <button class="ham" id="ham" aria-label="メニュー"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="sp-nav" id="sp-nav">
+    <a href="#items">取扱品目</a><a href="#flow">買取の流れ</a>
+    <a href="#reasons">選ばれる理由</a><a href="#saiji">催事について</a>
+    <a href="#faq">よくある質問</a><a href="#company">会社概要</a><a href="#contact">お問い合わせ</a>
+  </nav>
+</header>
+
+<!--
+  ===================================================
+  メインビジュアル 画像差し替えガイド
+
+  【フォルダ構成】
+    keiho/
+    ├── index.html
+    └── images/
+        └── hero.jpg   ← ここに画像を置く
+
+  【対応フォーマット】
+    JPG / PNG / WebP
+    推奨サイズ: 横 1920px 以上（縦 1080px 前後）
+    ※ 高解像度ほど綺麗に表示されます
+
+  【差し替え手順】
+    1. images/ フォルダを作成
+    2. 画像を hero.jpg という名前で入れる
+    3. 下の <img class="hero-bg-img"> の
+       src="images/hero.jpg" のファイル名を合わせる
+    4. 別名にする場合は src の値だけ書き換えてください
+       例: src="images/keiho_main.jpg"
+
+  ※ 画像の上に深緑のグラデーションが自動でかかり、
+     テキストが読みやすい状態を保ちます。
+  ===================================================
+-->
+<section class="hero" id="top">
+
+  <!-- ↓ メインビジュアル画像（ここのsrcを書き換えるだけ） -->
+  <img class="hero-bg-img" src="images/hero.jpg" alt="">
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow fu">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        催事買取専門 ｜ 関東中心・全国対応
+      </div>
+      <h1 class="fu">大切なものを、<br><span class="hl">正直な価格で。</span></h1>
+      <p class="hero-sub fu">金・プラチナ・宝飾品・時計・ブランド品など、眠っているお品物をその場で丁寧に査定いたします。関東を中心に全国の催事会場にて開催中。</p>
+      <div class="hero-btns fu">
+        <a href="tel:09057037929" class="btn-gold">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l1.27-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+          電話で相談する
+        </a>
+        <a href="#contact" class="btn-outline-w">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          お問い合わせはこちら
+        </a>
+      </div>
+      <div class="hero-chips fu">
+        <span class="chip"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-light)"><polyline points="20 6 9 17 4 12"/></svg> 予約不要・無料査定</span>
+        <span class="chip"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-light)"><polyline points="20 6 9 17 4 12"/></svg> その場で現金お支払い</span>
+        <span class="chip"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-light)"><polyline points="20 6 9 17 4 12"/></svg> 壊れていてもOK</span>
+        <span class="chip"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold-light)"><polyline points="20 6 9 17 4 12"/></svg> 査定だけでも歓迎</span>
+      </div>
+    </div>
+    <div class="hero-card fu">
+      <div class="hero-card-top">
+        <h3>まずはお気軽にご相談ください</h3>
+        <a href="tel:09057037929" class="hero-card-tel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold)"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l1.27-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+          090-5703-7929
+        </a>
+        <p class="hero-card-note">受付：催事開催日に準じます</p>
+      </div>
+      <div class="hero-card-body">
+        <ul class="hero-card-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg> 査定は完全無料</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg> 断っても問題ありません</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg> 証明書なしでも査定可</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg> 壊れていても対応します</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg> ご成約その場で現金払い</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:#d4831a;flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> 未成年は保護者の同意が必要</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="items">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-tag fu">Items</div>
+      <h2 class="sec-title fu">お買取りできるお品物</h2>
+      <p class="sec-desc fu">壊れていても、証明書がなくても、まずはお気軽にご相談ください。</p>
+    </div>
+    <!--
+      ===== 取扱品目アイコン 画像差し替えガイド =====
+      icons/ フォルダを作成し、下記ファイル名で画像を入れてください。
+      推奨サイズ: 56×56px（PNG透過 or SVG）
+
+        icons/gold.png        → 金・プラチナ・銀
+        icons/diamond.png     → ダイヤモンド
+        icons/jewelry.png     → 宝飾品・ジュエリー
+        icons/watch.png       → ブランド時計
+        icons/brand.png       → ブランド品
+        icons/stamp.png       → 切手・テレカ
+        icons/antique.png     → 骨董・古美術
+        icons/other.png       → その他貴重品
+      ================================================
+    -->
+    <div class="items-grid">
+
+      <!-- 金・プラチナ・銀 -->
+      <div class="item-card fu">
+        <div class="item-ico"><img src="icons/gold.png" alt="金・プラチナ・銀"></div>
+        <h3>金・プラチナ・銀</h3>
+        <p>K18・K24のアクセサリーやインゴット、プラチナのリング・ネックレス、銀製品など幅広くお買取りします。壊れていても、刻印が薄くなっていても査定可能です。</p>
+      </div>
+
+      <!-- ダイヤモンド -->
+      <div class="item-card fu">
+        <div class="item-ico"><img src="icons/diamond.png" alt="ダイヤモンド"></div>
+        <h3>ダイヤモンド</h3>
+        <p>裸石・指輪・ネックレスなどダイヤモンドが付いた宝飾品をお買取りします。鑑定書・鑑別書がなくてもお気軽にご相談ください。</p>
+      </div>
+
+      <!-- 宝飾品・ジュエリー -->
+      <div class="item-card fu">
+        <div class="item-ico"><img src="icons/jewelry.png" alt="宝飾品・ジュエリー"></div>
+        <h3>宝飾品・ジュエリー</h3>
+        <p>エメラルド・ルビー・サファイアなどのカラーストーンが入ったジュエリーも査定対象です。ルース（裸石）もお買取りできます。</p>
+      </div>
+
+      <!-- ブランド時計 -->
+      <div class="item-card fu">
+        <div class="item-ico"><img src="icons/watch.png" alt="ブランド時計"></div>
+        <h3>ブランド時計</h3>
+        <p>ロレックス・オメガ・カルティエなど国内外のブランド時計をお買取りします。動かない時計・古い時計もご相談ください。</p>
+      </div>
+
+      <!-- ブランド品 -->
+      <div class="item-card fu">
+        <div class="item-ico"><img src="icons/brand.png" alt="ブランド品"></div>
+        <h3>ブランド品</h3>
+        <p>ルイ・ヴィトン・シャネル・エルメスなどのバッグ・財布・小物をお買取りします。傷や汚れがあってもお気軽にご相談ください。</p>
+      </div>
+
+      <!-- 切手・テレカ -->
+      <div class="item-card fu">
+        <div class="item-ico"><img src="icons/stamp.png" alt="切手・テレカ"></div>
+        <h3>切手・テレカ</h3>
+        <p>未使用切手・切手シート・プレミアム切手を高価買取中です。古い切手ほど価値が高いものもございます。まとめてお持ちください。</p>
+      </div>
+
+      <!-- 骨董・古美術 -->
+      <div class="item-card fu">
+        <div class="item-ico"><img src="icons/antique.png" alt="骨董・古美術"></div>
+        <h3>骨董・古美術</h3>
+        <p>掛け軸・陶磁器・茶道具・古銭など骨董品全般をお買取りします。価値がわからないものでも、まずはご相談ください。</p>
+      </div>
+
+      <!-- その他貴重品 -->
+      <div class="item-card fu">
+        <div class="item-ico"><img src="icons/other.png" alt="その他貴重品"></div>
+        <h3>その他貴重品</h3>
+        <p>上記以外のお品物もお気軽にご相談ください。金属素材のもの・年代物・ブランド品など、お値段がつく可能性があります。</p>
+      </div>
+
+    </div>
+    <div class="items-note fu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <p><strong>「これは買取できるかな？」と迷ったら、まずお持ちください。</strong><br>壊れていてもOK・証明書なしでもご相談ください。専門スタッフが丁寧に確認いたします。</p>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-tag fu">Flow</div>
+      <h2 class="sec-title fu">かんたん4ステップ</h2>
+      <p class="sec-desc fu">予約不要・入場無料。お品物をお持ちいただくだけで大丈夫です。</p>
+    </div>
+    <div class="flow-row">
+      <div class="flow-card fu"><div class="flow-num-wrap"><span class="step-label">STEP</span><span class="step-num">1</span></div><h3>会場にお越しください</h3><p>お近くの催事会場にお気軽にお立ち寄りください。予約不要・入場無料です。お品物をお持ちいただくだけで大丈夫です。</p></div>
+      <div class="flow-card fu"><div class="flow-num-wrap"><span class="step-label">STEP</span><span class="step-num">2</span></div><h3>無料査定</h3><p>専門スタッフがその場でお品物を丁寧に拝見します。金属の種類・重さ・状態を確認し、買取価格をご提示します。所要時間は通常5〜15分程度です。</p></div>
+      <div class="flow-card fu"><div class="flow-num-wrap"><span class="step-label">STEP</span><span class="step-num">3</span></div><h3>金額のご確認・ご納得</h3><p>査定額と根拠をわかりやすくご説明します。ご納得いただけた場合のみお取引を進めます。無理な勧誘は一切ありません。</p></div>
+      <div class="flow-card fu"><div class="flow-num-wrap"><span class="step-label">STEP</span><span class="step-num">4</span></div><h3>その場で現金お支払い</h3><p>ご同意いただいたその場で現金をお渡しします。お振込みは行いません。本人確認書類（免許証・マイナンバーカード等）をご持参ください。</p></div>
+    </div>
+    <div class="flow-note fu"><strong>本人確認書類について：</strong>古物営業法に基づき、お取引の際は本人確認書類（運転免許証・マイナンバーカード・健康保険証等）のご提示が必要です。</div>
+  </div>
+</section>
+
+<section id="reasons">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-tag fu">Why KEIHO</div>
+      <h2 class="sec-title fu">選ばれる4つの理由</h2>
+      <p class="sec-desc fu">お客様に安心してお取引いただけるよう、誠実な査定と丁寧な対応を心がけています。</p>
+    </div>
+    <div class="reasons-grid">
+      <div class="reason-card fu">
+        <div class="reason-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="reason-body"><h3>その場で即現金お支払い</h3><p>査定が完了したその場で現金をお支払いします。お振込みや後日払いは一切なく、安心してお取引いただけます。</p></div>
+      </div>
+      <div class="reason-card fu">
+        <div class="reason-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="reason-body"><h3>丁寧な説明と誠実な査定</h3><p>「なぜこの金額なのか」を丁寧にご説明します。無理な交渉や強引な買取は一切行いません。ご納得いただけない場合はお断りいただいてもかまいません。</p></div>
+      </div>
+      <div class="reason-card fu">
+        <div class="reason-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+        </div>
+        <div class="reason-body"><h3>どんな状態でもまず査定</h3><p>壊れていても、証明書がなくても、古くても、まずはお持ちください。価値があるものかどうか、無料で査定します。</p></div>
+      </div>
+      <div class="reason-card fu">
+        <div class="reason-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="reason-body"><h3>関東中心に全国で開催</h3><p>スーパーやショッピングセンターなど、お近くの会場で開催しています。わざわざ専門店に出向く必要はありません。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="saiji">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-tag fu">About Saiji</div>
+      <h2 class="sec-title fu">催事買取とは？</h2>
+    </div>
+    <div class="saiji-wrap">
+      <div class="saiji-text">
+        <p class="fu">催事買取とは、スーパーやショッピングセンターなどの商業施設内に出張して行う買取サービスです。専門店に足を運ぶことなく、日常のお買い物のついでにお気軽にご利用いただけます。</p>
+        <p class="fu">株式会社KEIHOでは、多くの企業様の特別なご協力をいただき、貴重なスペースをお借りして催事を開催しています。関東を中心に全国各地で定期的に開催しておりますので、お近くで開催の際はぜひお立ち寄りください。</p>
+        <p class="fu" style="font-size:13px; color:var(--text-light);">※ 催事スケジュール・出展先は近日公開予定です。</p>
+      </div>
+      <div class="promise-box fu">
+        <h4>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold);flex-shrink:0;"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          催事会場でのお約束
+        </h4>
+        <div class="promise-item">
+          <svg class="ico-ok" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          予約不要・入場無料
+        </div>
+        <div class="promise-item">
+          <svg class="ico-ok" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          強引な買取は一切しません
+        </div>
+        <div class="promise-item">
+          <svg class="ico-ok" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          査定だけでもOKです
+        </div>
+        <div class="promise-item">
+          <svg class="ico-ok" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          その場で現金お支払い
+        </div>
+        <div class="promise-item">
+          <svg class="ico-ok" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          本人確認書類があればOK
+        </div>
+        <div class="promise-item">
+          <svg class="ico-warn" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          未成年の方は保護者の同意が必要です
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="sec-in">
+    <div class="sec-head">
+      <div class="sec-tag fu">FAQ</div>
+      <h2 class="sec-title fu">よくある質問</h2>
+      <p class="sec-desc fu">ご不明な点はお気軽にお問い合わせください。</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>査定は無料ですか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">はい、査定は完全無料です。査定後、金額にご納得いただけない場合はお断りいただいてもまったく問題ありません。</div></div></div>
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>証明書（鑑定書・鑑別書）がなくても大丈夫ですか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">はい、証明書がなくてもお買取り可能です。専門スタッフがその場で確認いたします。証明書がある場合は、より正確な査定につながることがあります。</div></div></div>
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>壊れていたり、古いものでも買取できますか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">はい、状態が悪くてもお買取りできる場合がほとんどです。まずはお気軽にお持ちください。金属・宝石の素材価値は状態に関わらず残っていることが多いです。</div></div></div>
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>いくらになるか事前にわかりますか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">実際にお品物を拝見しないと正確な金額はお伝えできません。金属の重さや品位（純度）、宝石の状態などを確認した上でご提示いたします。</div></div></div>
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>当日その場で現金をもらえますか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">はい、ご同意いただいたその場で現金をお渡しします。お振込みや後日払いは行っておりません。</div></div></div>
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>未成年でも利用できますか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">未成年の方の買取には、保護者の方の同意書が必要です。ご来場の際は保護者の方と一緒にお越しいただくか、事前にご相談ください。</div></div></div>
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>どんなものでも持っていけばいいですか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">金・プラチナ・銀・ダイヤモンド・宝飾品・時計・ブランド品・切手・骨董品などが主な対象です。「これは買取できる？」と迷ったらまずお持ちください。</div></div></div>
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>本人確認は必要ですか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">古物営業法に基づき、お取引の際は本人確認書類（運転免許証・マイナンバーカード・健康保険証など）のご提示をお願いしています。</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="message">
+  <div class="sec-in">
+    <div class="sec-tag fu" style="justify-content:center; margin-bottom:10px;">Message</div>
+    <h2 class="sec-title fu" style="text-align:center; margin-bottom:36px;">代表メッセージ</h2>
+    <div class="msg-wrap fu">
+      <div class="msg-deco">"</div>
+      <p>はじめまして。株式会社KEIHO代表の石塚未来斗と申します。</p>
+      <p>「大切にしてきたものを、正直に評価してほしい」——そんなお客様の想いにしっかりとお応えできる会社でありたいと考えています。</p>
+      <p>催事の現場では、お客様一人ひとりのお品物を丁寧に拝見し、納得いただける価格でお取引できるよう努めています。強引な交渉や不透明な査定は一切しません。</p>
+      <p>まずはお気軽にお立ち寄りください。査定だけでも、相談だけでも、大歓迎です。</p>
+      <div class="msg-sign">株式会社KEIHO　代表取締役　石塚 未来斗</div>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="sec-in">
+    <div class="sec-tag fu">Company</div>
+    <h2 class="sec-title fu">会社概要</h2>
+    <div class="fu">
+      <table class="co-table">
+        <tr><th>会社名</th><td>株式会社 KEIHO</td></tr>
+        <tr><th>代表者</th><td>石塚 未来斗</td></tr>
+        <tr><th>所在地</th><td>埼玉県春日部市備後西3丁目6番46号 102</td></tr>
+        <tr><th>電話番号</th><td><a href="tel:09057037929" style="color:var(--green); font-weight:700;">090-5703-7929</a></td></tr>
+        <tr><th>事業内容</th><td>貴金属・宝飾品等の買取事業（催事出展）</td></tr>
+        <tr><th>対応エリア</th><td>関東中心・全国対応</td></tr>
+        <!-- ========================================================
+             古物商許可証番号：取得後にここを更新してください
+             【変更箇所】この <tr> 内の <td> の内容を書き換えます
+             例: 埼玉県公安委員会　第123456789012号
+             ======================================================== -->
+        <tr>
+          <th>古物商許可証</th>
+          <td id="license-number">
+            <!-- 取得後にここへ許可証番号を記載 -->
+            <span style="color:var(--text-light); font-size:13px;">（許可申請中）</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-in">
+    <div class="sec-head" style="text-align:center;">
+      <div class="sec-tag fu" style="justify-content:center;">Contact</div>
+      <h2 class="sec-title fu">お気軽にご相談ください</h2>
+      <p class="sec-desc fu" style="margin: 0 auto 40px;">査定だけでも、相談だけでも大歓迎です。</p>
+    </div>
+    <div class="form-card fu">
+      <div class="tel-box">
+        <p>お急ぎの方はお電話でどうぞ</p>
+        <a href="tel:09057037929">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold);"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l1.27-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+          090-5703-7929
+        </a>
+        <p class="sub">受付：催事開催日に準じます</p>
+      </div>
+      <div class="or-div"><span>またはフォームでお問い合わせ</span></div>
+      <form id="cf" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="fg"><label>お名前 <span class="req">必須</span></label><input type="text" name="name" placeholder="例：山田 太郎" required></div>
+        <div class="fg"><label>電話番号 <span class="req">必須</span></label><input type="tel" name="phone" placeholder="例：090-1234-5678" required></div>
+        <div class="fg"><label>メールアドレス</label><input type="email" name="email" placeholder="例：example@email.com"></div>
+        <div class="fg"><label>お問い合わせ内容 <span class="req">必須</span></label><textarea name="message" placeholder="お品物の種類・状態・ご質問など、お気軽にご記入ください。" required></textarea></div>
+        <div class="form-notice">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          未成年の方の買取には、保護者様の同意書が必要です。ご不明な点はお問い合わせください。
+        </div>
+        <button type="submit" class="btn-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          送信する
+        </button>
+      </form>
+      <div class="thanks" id="thanks">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-bottom:14px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h3>お問い合わせありがとうございます</h3>
+        <p>担当者よりご連絡いたします。しばらくお待ちください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <div class="ft-logo"><div class="mk"><span>K</span></div><div class="nm">株式会社 KEIHO</div></div>
+        <div class="ft-info"><p>〒344-0057 埼玉県春日部市備後西3丁目6番46号 102<br>TEL：<a href="tel:09057037929">090-5703-7929</a><br>
+          <!-- ================================================
+               古物商許可証番号（取得後に記載）
+               例: 古物商許可証：埼玉県公安委員会　第123456789012号
+               ================================================ -->
+          <span id="ft-license"></span>対応エリア：関東中心・全国対応</p></div>
+      </div>
+      <div class="ft-col">
+        <h4>サービス</h4>
+        <a href="#items">取扱品目</a><a href="#flow">買取の流れ</a>
+        <a href="#reasons">選ばれる理由</a><a href="#saiji">催事について</a><a href="#faq">よくある質問</a>
+      </div>
+      <div class="ft-col">
+        <h4>会社情報</h4>
+        <a href="#company">会社概要</a><a href="#message">代表メッセージ</a>
+        <a href="#contact">お問い合わせ</a>
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="antisocial.html">反社排除・免責事項</a>
+      </div>
+    </div>
+    <div class="ft-legal">【反社会的勢力排除方針】株式会社KEIHOは、反社会的勢力（暴力団、暴力団員、暴力団関係企業、総会屋等）との一切の関係を拒絶します。不当要求が発生した場合は速やかに警察等の関係機関へ通報します。<br>【免責事項】査定価格は、お品物の状態・貴金属相場・市場動向等により変動します。カタログ等に掲載の参考価格と異なる場合がありますのでご了承ください。</div>
+    <div class="ft-copy">Copyright &copy; 2026 株式会社KEIHO All Rights Reserved.</div>
+  </div>
+</footer>
+
+<div class="sp-float">
+  <a href="tel:09057037929" class="sp-tel">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l1.27-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
+    電話する
+  </a>
+  <a href="#contact" class="sp-form">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    フォーム
+  </a>
+</div>
+
+<script>
+  const ham = document.getElementById('ham');
+  const nav = document.getElementById('sp-nav');
+  ham.addEventListener('click', () => { ham.classList.toggle('open'); nav.classList.toggle('open'); });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); nav.classList.remove('open'); }));
+
+  document.querySelectorAll('.faq-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!open) item.classList.add('open');
+    });
+  });
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fu').forEach(el => io.observe(el));
+
+  document.getElementById('cf').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('cf').style.display = 'none';
+    document.getElementById('thanks').style.display = 'block';
+  });
+</script>
+</body>
+</html>

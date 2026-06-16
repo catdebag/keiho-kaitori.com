@@ -121,7 +121,7 @@
 
     /* ========== HERO ========== */
     .hero {
-      background: var(--green); position: relative; overflow: hidden;
+      background: #f5f0e8; position: relative; overflow: hidden;
       min-height: 76vh; display: flex; align-items: center;
     }
 
@@ -141,12 +141,13 @@
     }
     .hero::before {
       content: ''; position: absolute; inset: 0;
-      /* 明るい画像でも文字が読めるよう濃いオーバーレイ */
+      /* 明るいジュエリー写真用：左側に白ベースのグラデーションオーバーレイ */
       background: linear-gradient(
-        105deg,
-        rgba(12, 40, 24, 0.78) 0%,
-        rgba(18, 61, 39, 0.72) 50%,
-        rgba(12, 40, 24, 0.65) 100%
+        100deg,
+        rgba(255,255,255,0.82) 0%,
+        rgba(255,255,255,0.75) 45%,
+        rgba(255,255,255,0.40) 75%,
+        rgba(255,255,255,0.10) 100%
       );
       pointer-events: none;
       z-index: 0;
@@ -154,7 +155,7 @@
     .hero::after {
       content: ''; position: absolute; right: 80px; top: -140px;
       width: 380px; height: 380px; border-radius: 50%;
-      background: rgba(184,146,42,0.10); pointer-events: none;
+      background: rgba(184,146,42,0.06); pointer-events: none;
       z-index: 0;
     }
     .hero-inner {
@@ -164,17 +165,17 @@
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(212,170,80,0.18); border: 1px solid rgba(212,170,80,0.45);
-      color: var(--gold-light); font-size: 11px; letter-spacing: 2.5px;
+      background: rgba(184,146,42,0.12); border: 1px solid rgba(184,146,42,0.4);
+      color: var(--green); font-size: 11px; letter-spacing: 2.5px;
       padding: 6px 16px; border-radius: 100px; margin-bottom: 24px;
     }
     .hero h1 {
       font-family: 'Noto Serif JP', serif; font-size: clamp(30px, 4.5vw, 52px);
-      font-weight: 700; color: var(--white); line-height: 1.45; margin-bottom: 20px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+      font-weight: 700; color: var(--green-dark); line-height: 1.45; margin-bottom: 20px;
+      text-shadow: none;
     }
-    .hero h1 .hl { color: var(--gold-light); border-bottom: 2px solid rgba(212,170,80,0.6); padding-bottom: 2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-    .hero-sub { font-size: 15px; color: var(--white); line-height: 1.9; margin-bottom: 36px; max-width: 500px; text-shadow: 0 1px 6px rgba(0,0,0,0.5); }
+    .hero h1 .hl { color: var(--gold); border-bottom: 2px solid rgba(184,146,42,0.5); padding-bottom: 2px; text-shadow: none; }
+    .hero-sub { font-size: 15px; color: var(--text-mid); line-height: 1.9; margin-bottom: 36px; max-width: 500px; text-shadow: none; }
     .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
 
     .btn-gold {
@@ -185,20 +186,21 @@
     }
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
     .btn-outline-w {
-      display: inline-flex; align-items: center; gap: 10px; background: transparent;
-      color: var(--white); padding: 14px 26px; border-radius: 8px;
-      border: 2px solid rgba(255,255,255,0.4); font-weight: 700; font-size: 15px;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.85);
+      color: var(--green); padding: 14px 26px; border-radius: 8px;
+      border: 2px solid var(--green); font-weight: 700; font-size: 15px;
       text-decoration: none; transition: all .2s;
     }
-    .btn-outline-w:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+    .btn-outline-w:hover { background: var(--green); color: var(--white); }
 
     .hero-chips { display: flex; gap: 10px; flex-wrap: wrap; }
     .chip {
       display: flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 100px; color: rgba(255,255,255,0.9); font-size: 12px; padding: 6px 14px;
+      background: rgba(255,255,255,0.75); border: 1px solid rgba(26,92,58,0.25);
+      border-radius: 100px; color: var(--text-mid); font-size: 12px; padding: 6px 14px;
     }
-    .chip i { color: var(--gold-light); font-size: 11px; }
+    .chip i { color: var(--gold); font-size: 11px; }
 
     .hero-card {
       background: var(--white); border-radius: 16px; overflow: hidden;
@@ -252,16 +254,17 @@
     .item-card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(26,92,58,0.1); }
     .item-card:hover::before { transform: scaleX(1); }
     .item-ico {
-      width: 100%; height: 160px;
-      background: var(--green-soft);
+      width: 100%; height: 240px;
+      background: #ffffff;                /* 透過PNG用の白背景 */
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 0 16px; transition: background .25s;
+      margin: 0 0 16px;
       overflow: hidden;
+      border-bottom: 1px solid var(--border);
     }
-    .item-card:hover .item-ico { background: var(--green-soft); }
-    .item-ico i { color: var(--green); font-size: 36px; transition: color .25s; }
-    .item-ico img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .item-card:hover .item-ico { background: #ffffff; }
+    .item-ico i { color: var(--green); font-size: 36px; }
+    .item-ico img { width: 100%; height: 100%; object-fit: contain; display: block; padding: 16px; }
     .item-card:hover .item-ico i { color: var(--gold); }
     .item-card:hover .item-ico img { filter: none; }
     .item-card h3 { font-size: 14px; font-weight: 700; color: var(--green-dark); margin-bottom: 8px; padding: 0 16px; }
@@ -1023,4 +1026,3 @@
 </script>
 </body>
 </html>
-

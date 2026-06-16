@@ -40,7 +40,7 @@
      *     <img src="images/logo.svg" alt="株式会社KEIHO" class="logo-img"> に置換
      *
      *  【メインビジュアル（ヒーロー背景）】
-     *  1. 画像を images/hero.jpg などに配置
+     *  1. 画像を images/hero.png などに配置
      *  2. 下の .hero のコメントアウト部分を外してファイル名を修正するだけでOK
      *
      * ============================================================
@@ -127,7 +127,7 @@
 
     /* -------------------------------------------------------
      * メインビジュアル（背景画像）
-     * images/hero.jpg を配置すると自動で背景に表示されます。
+     * images/hero.png を配置すると自動で背景に表示されます。
      * .hero-bg-img は <img> タグで差し替える方式です（後述）。
      * ------------------------------------------------------- */
     .hero-bg-img {
@@ -252,7 +252,7 @@
     .item-card:hover { border-color: var(--green); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(26,92,58,0.1); }
     .item-card:hover::before { transform: scaleX(1); }
     .item-ico {
-      width: 100%; height: 120px;
+      width: 100%; height: 160px;
       background: var(--green-soft);
       border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
@@ -462,6 +462,7 @@
       padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px;
     }
     .ft-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .ft-logo-img { height: 36px; width: auto; object-fit: contain; display: block; }
     .ft-logo .mk {
       width: 38px; height: 38px; background: var(--gold); border-radius: 8px;
       display: flex; align-items: center; justify-content: center;
@@ -538,7 +539,7 @@
           推奨サイズ: 高さ 44px 程度・横幅は自動調整
 
         【差し替え手順】
-          1. images/ フォルダ（hero.jpg と同じ場所）に
+          1. images/ フォルダ（hero.png と同じ場所）に
              ロゴ画像を入れる
           2. 下の src="images/logo.png" のファイル名を合わせる
              例: src="images/keiho_logo.svg"
@@ -552,10 +553,10 @@
            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       <div class="logo-fallback" style="display:flex;">
         <div class="logo-badge"><span>K</span></div>
-        <div class="logo-words">
-          <div class="en">KEIHO</div>
-          <div class="ja">株式会社 KEIHO</div>
-        </div>
+      </div>
+      <div class="logo-words">
+        <div class="en">KEIHO</div>
+        <div class="ja">株式会社 KEIHO</div>
       </div>
     </a>
     <div class="hd-right">
@@ -582,7 +583,7 @@
     keiho/
     ├── index.html
     └── images/
-        └── hero.jpg   ← ここに画像を置く
+        └── hero.png   ← ここに画像を置く
 
   【対応フォーマット】
     JPG / PNG / WebP
@@ -591,9 +592,9 @@
 
   【差し替え手順】
     1. images/ フォルダを作成
-    2. 画像を hero.jpg という名前で入れる
+    2. 画像を hero.png という名前で入れる
     3. 下の <img class="hero-bg-img"> の
-       src="images/hero.jpg" のファイル名を合わせる
+       src="images/hero.png" のファイル名を合わせる
     4. 別名にする場合は src の値だけ書き換えてください
        例: src="images/keiho_main.jpg"
 
@@ -604,7 +605,7 @@
 <section class="hero" id="top">
 
   <!-- ↓ メインビジュアル画像（ここのsrcを書き換えるだけ） -->
-  <img class="hero-bg-img" src="images/hero.jpg" alt="">
+  <img class="hero-bg-img" src="images/hero.png" alt="">
 
   <div class="hero-inner">
     <div class="hero-left">
@@ -949,7 +950,15 @@
   <div class="ft-in">
     <div class="ft-top">
       <div>
-        <div class="ft-logo"><div class="mk"><span>K</span></div><div class="nm">株式会社 KEIHO</div></div>
+        <div class="ft-logo">
+          <img src="images/logo.png" alt="株式会社KEIHO" class="ft-logo-img"
+               onload="this.nextElementSibling.style.display='none';"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="ft-logo-fallback" style="display:flex; align-items:center; gap:10px;">
+            <div class="mk"><span>K</span></div>
+          </div>
+          <div class="nm">株式会社 KEIHO</div>
+        </div>
         <div class="ft-info"><p>〒344-0057 埼玉県春日部市備後西3丁目6番46号 102<br>TEL：<a href="tel:09057037929">090-5703-7929</a><br>
           <!-- ================================================
                古物商許可証番号（取得後に記載）

@@ -1,0 +1,19 @@
+# ============================================================
+#  netlify.toml — Netlifyの設定ファイル
+#  リポジトリのルートに置いてください
+# ============================================================
+
+[build]
+  publish = "."    # HTMLファイルがあるフォルダ（サブフォルダなら例: "public"）
+
+# ── Netlify Identity のリダイレクト設定（必須）
+[[redirects]]
+  from = "/admin"
+  to   = "/admin/index.html"
+  status = 200
+
+# ── SPAフォールバック（ブログ個別ページ用）
+[[redirects]]
+  from = "/*"
+  to   = "/index.html"
+  status = 200

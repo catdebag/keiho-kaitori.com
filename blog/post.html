@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>記事｜株式会社KEIHO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js.yaml.min.js"></script>
+  <style>
+    :root {
+      --green: #1A5C3A; --green-dark: #0f3d27; --green-pale: #f0f7f3;
+      --gold: #B8922A; --gold-light: #d4aa50;
+      --cream: #FAFAF6; --white: #fff;
+      --text: #1c2a22; --text-mid: #4a5e52; --text-light: #7a8f82;
+      --border: #d4e3d9;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--cream); color: var(--text); }
+
+    header { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-badge { width: 40px; height: 40px; background: var(--green); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+    .logo-badge span { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 700; color: #fff; }
+    .logo-name { font-size: 15px; font-weight: 700; color: var(--green); }
+    .back-link { font-size: 13px; color: var(--text-mid); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .back-link:hover { color: var(--green); }
+
+    .article-wrap { max-width: 760px; margin: 48px auto 80px; padding: 0 24px; }
+    .article-header { margin-bottom: 32px; }
+    .article-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .article-cat { font-size: 11px; font-weight: 700; color: var(--green); background: var(--green-pale); padding: 4px 12px; border-radius: 100px; }
+    .article-date { font-size: 12px; color: var(--text-light); }
+    .article-title { font-family: 'Shippori Mincho', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: var(--green-dark); line-height: 1.5; margin-bottom: 24px; }
+    .article-thumb { width: 100%; border-radius: 14px; margin-bottom: 36px; }
+
+    .article-body { font-size: 15px; line-height: 2; color: var(--text-mid); }
+    .article-body h2 { font-family: 'Shippori Mincho', serif; font-size: 22px; font-weight: 700; color: var(--green-dark); margin: 40px 0 16px; padding-bottom: 10px; border-bottom: 2px solid var(--green-pale); }
+    .article-body h3 { font-size: 17px; font-weight: 700; color: var(--green-dark); margin: 28px 0 12px; }
+    .article-body p { margin-bottom: 18px; }
+    .article-body ul, .article-body ol { padding-left: 24px; margin-bottom: 18px; }
+    .article-body li { margin-bottom: 6px; }
+    .article-body img { max-width: 100%; border-radius: 10px; margin: 12px 0; }
+    .article-body a { color: var(--green); }
+    .article-body strong { color: var(--text); }
+    .article-body blockquote { border-left: 3px solid var(--gold); padding: 12px 20px; background: var(--green-pale); border-radius: 0 8px 8px 0; margin: 20px 0; color: var(--text-mid); font-style: italic; }
+
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 48px; padding: 12px 24px; background: var(--green); color: #fff; border-radius: 8px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all .2s; }
+    .back-btn:hover { background: var(--green-dark); }
+
+    .loading { text-align: center; padding: 80px 20px; color: var(--text-light); }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo-link">
+    <div class="logo-badge"><span>K</span></div>
+    <span class="logo-name">株式会社KEIHO</span>
+  </a>
+  <a href="/blog/" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    ブログ一覧へ
+  </a>
+</header>
+
+<div class="article-wrap" id="articleWrap">
+  <div class="loading">記事を読み込んでいます...</div>
+</div>
+
+<script>
+const REPO = 'catdebag/keiho-kaitori.com'; // ← 変更してください
+
+async function loadPost() {
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug');
+  if (!slug) { location.href = '/blog/'; return; }
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/blog/${slug}.md`);
+    if (!res.ok) throw new Error('not found');
+    const json = await res.json();
+    const raw = atob(json.content.replace(/\n/g, ''));
+
+    const match = raw.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)$/);
+    if (!match) throw new Error('parse error');
+
+    const meta = jsyaml.load(match[1]);
+    const bodyMd = match[2];
+    const bodyHtml = marked.parse(bodyMd);
+
+    document.title = `${meta.title}｜株式会社KEIHO`;
+    const date = meta.date ? new Date(meta.date).toLocaleDateString('ja-JP', { year:'numeric', month:'long', day:'numeric' }) : '';
+    const thumb = meta.thumbnail ? `<img class="article-thumb" src="${meta.thumbnail}" alt="${meta.title}">` : '';
+
+    document.getElementById('articleWrap').innerHTML = `
+      <div class="article-header">
+        <div class="article-meta">
+          ${meta.category ? `<span class="article-cat">${meta.category}</span>` : ''}
+          <span class="article-date">${date}</span>
+        </div>
+        <h1 class="article-title">${meta.title}</h1>
+      </div>
+      ${thumb}
+      <div class="article-body">${bodyHtml}</div>
+      <a href="/blog/" class="back-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        ブログ一覧に戻る
+      </a>
+    `;
+  } catch(e) {
+    document.getElementById('articleWrap').innerHTML = `<div class="loading">記事が見つかりませんでした。<br><a href="/blog/" style="color:var(--green)">ブログ一覧へ</a></div>`;
+  }
+}
+
+loadPost();
+</script>
+</body>
+</html>

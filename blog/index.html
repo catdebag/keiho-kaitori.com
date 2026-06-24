@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブログ｜株式会社KEIHO</title>
+  <meta name="description" content="株式会社KEIHOのブログ。催事情報・買取情報・スタッフコラムなどを発信しています。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- markdown → HTML 変換ライブラリ -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- YAML パーサー（frontmatter読み取り用） -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js.yaml.min.js"></script>
+
+  <style>
+    :root {
+      --green: #1A5C3A; --green-dark: #0f3d27; --green-pale: #f0f7f3;
+      --gold: #B8922A; --gold-light: #d4aa50;
+      --cream: #FAFAF6; --white: #fff;
+      --text: #1c2a22; --text-mid: #4a5e52; --text-light: #7a8f82;
+      --border: #d4e3d9;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: var(--cream); color: var(--text); }
+
+    /* header */
+    header { background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--border); padding: 0 32px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .logo-link { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-badge { width: 40px; height: 40px; background: var(--green); border-radius: 9px; display: flex; align-items: center; justify-content: center; }
+    .logo-badge span { font-family: 'Shippori Mincho', serif; font-size: 20px; font-weight: 700; color: #fff; }
+    .logo-name { font-size: 15px; font-weight: 700; color: var(--green); }
+    .back-link { font-size: 13px; color: var(--text-mid); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+    .back-link:hover { color: var(--green); }
+
+    /* hero */
+    .page-hero { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%); padding: 56px 32px 48px; text-align: center; }
+    .page-hero .tag { font-size: 10px; letter-spacing: 4px; color: var(--gold-light); font-weight: 700; margin-bottom: 12px; }
+    .page-hero h1 { font-family: 'Shippori Mincho', serif; font-size: clamp(26px, 4vw, 40px); color: #fff; font-weight: 700; }
+
+    /* filter */
+    .filter-bar { max-width: 1000px; margin: 40px auto 0; padding: 0 24px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .filter-btn { padding: 8px 20px; border-radius: 100px; border: 1.5px solid var(--border); background: var(--white); color: var(--text-mid); font-size: 13px; font-weight: 500; cursor: pointer; transition: all .2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--green); color: #fff; border-color: var(--green); }
+
+    /* grid */
+    .blog-wrap { max-width: 1000px; margin: 40px auto 80px; padding: 0 24px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .blog-card { background: var(--white); border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border); transition: all .25s; text-decoration: none; color: inherit; display: block; }
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(26,92,58,0.12); border-color: var(--green); }
+    .card-thumb { width: 100%; height: 180px; object-fit: cover; background: var(--green-pale); display: block; }
+    .card-thumb-placeholder { width: 100%; height: 180px; background: linear-gradient(135deg, var(--green-pale) 0%, #ddeee5 100%); display: flex; align-items: center; justify-content: center; }
+    .card-thumb-placeholder svg { color: var(--green); opacity: 0.3; }
+    .card-body { padding: 18px 20px 20px; }
+    .card-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .card-cat { font-size: 10px; font-weight: 700; color: var(--green); background: var(--green-pale); padding: 3px 10px; border-radius: 100px; letter-spacing: 0.5px; }
+    .card-date { font-size: 11px; color: var(--text-light); }
+    .card-title { font-family: 'Shippori Mincho', serif; font-size: 15px; font-weight: 700; color: var(--text); line-height: 1.55; }
+    .card-title:hover { color: var(--green); }
+
+    /* empty */
+    .empty { text-align: center; padding: 80px 20px; color: var(--text-light); }
+    .empty svg { margin-bottom: 16px; opacity: .4; }
+    .empty p { font-size: 14px; }
+
+    /* loading */
+    .loading { text-align: center; padding: 60px; color: var(--text-light); font-size: 14px; }
+
+    @media (max-width: 768px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo-link">
+    <div class="logo-badge"><span>K</span></div>
+    <span class="logo-name">株式会社KEIHO</span>
+  </a>
+  <a href="/" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    トップページへ戻る
+  </a>
+</header>
+
+<div class="page-hero">
+  <div class="tag">BLOG</div>
+  <h1>ブログ</h1>
+</div>
+
+<div class="filter-bar" id="filterBar">
+  <button class="filter-btn active" data-cat="all">すべて</button>
+  <button class="filter-btn" data-cat="買取情報">買取情報</button>
+  <button class="filter-btn" data-cat="催事スケジュール">催事スケジュール</button>
+  <button class="filter-btn" data-cat="スタッフコラム">スタッフコラム</button>
+  <button class="filter-btn" data-cat="お知らせ">お知らせ</button>
+</div>
+
+<div class="blog-wrap">
+  <div id="blogGrid" class="blog-grid">
+    <div class="loading" style="grid-column:1/-1;">記事を読み込んでいます...</div>
+  </div>
+</div>
+
+<script>
+// ================================================================
+//  ブログ記事一覧を GitHub API から取得して表示する
+//  ※ Netlifyでホスティング後はGitHub APIで直接Markdownを取得
+// ================================================================
+
+const REPO = 'catdebag/keiho-kaitori.com'; // ← config.ymlと同じものに変更
+
+async function fetchPosts() {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/blog`);
+    if (!res.ok) throw new Error('fetch failed');
+    const files = await res.json();
+    const mdFiles = files.filter(f => f.name.endsWith('.md'));
+
+    const posts = await Promise.all(mdFiles.map(async f => {
+      const r = await fetch(f.download_url);
+      const raw = await r.text();
+      return parsePost(raw, f.name);
+    }));
+
+    return posts
+      .filter(p => p && p.published !== false)
+      .sort((a, b) => new Date(b.date) - new Date(a.date));
+  } catch(e) {
+    console.error(e);
+    return [];
+  }
+}
+
+function parsePost(raw, filename) {
+  const match = raw.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)$/);
+  if (!match) return null;
+  try {
+    const meta = jsyaml.load(match[1]);
+    meta.slug = filename.replace(/\.md$/, '');
+    return meta;
+  } catch(e) { return null; }
+}
+
+function renderCard(post) {
+  const date = post.date ? new Date(post.date).toLocaleDateString('ja-JP', { year:'numeric', month:'long', day:'numeric' }) : '';
+  const thumb = post.thumbnail
+    ? `<img class="card-thumb" src="${post.thumbnail}" alt="${post.title}" loading="lazy">`
+    : `<div class="card-thumb-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`;
+
+  return `
+    <a href="/blog/post.html?slug=${post.slug}" class="blog-card" data-cat="${post.category || ''}">
+      ${thumb}
+      <div class="card-body">
+        <div class="card-meta">
+          ${post.category ? `<span class="card-cat">${post.category}</span>` : ''}
+          <span class="card-date">${date}</span>
+        </div>
+        <div class="card-title">${post.title}</div>
+      </div>
+    </a>`;
+}
+
+async function init() {
+  const grid = document.getElementById('blogGrid');
+  const posts = await fetchPosts();
+
+  if (posts.length === 0) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <p>まだ記事がありません。<br>管理画面から最初の記事を投稿してみましょう。</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = posts.map(renderCard).join('');
+
+  // カテゴリフィルター
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.blog-card').forEach(card => {
+        card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+      });
+    });
+  });
+}
+
+init();
+</script>
+</body>
+</html>

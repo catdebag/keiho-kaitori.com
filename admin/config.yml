@@ -1,0 +1,53 @@
+# ============================================================
+#  Decap CMS 設定ファイル（KEIHO用）
+#  このファイルは admin/config.yml に置いてください
+# ============================================================
+
+backend:
+  name: github
+  repo: catdebag/keiho-kaitori.com   # ← ここを変更（例: keiho-inc/keiho-site）
+  branch: main                                 # ← メインブランチ名（mainまたはmaster）
+
+# アップロード画像の保存先
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# ロケール（日本語UI）
+locale: ja
+
+collections:
+  # ──────────────────────────────────────────
+  #  ブログ記事
+  # ──────────────────────────────────────────
+  - name: "blog"
+    label: "ブログ記事"
+    folder: "blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "タイトル",     name: "title",       widget: "string",   hint: "記事のタイトルを入力してください" }
+      - { label: "公開日",       name: "date",        widget: "datetime", format: "YYYY-MM-DD", default: "" }
+      - { label: "サムネイル画像", name: "thumbnail",  widget: "image",    required: false, hint: "推奨サイズ: 800×500px" }
+      - { label: "カテゴリ",     name: "category",    widget: "select",
+          options: ["買取情報", "催事スケジュール", "スタッフコラム", "お知らせ"],
+          default: "お知らせ" }
+      - { label: "本文",         name: "body",        widget: "markdown" }
+      - { label: "公開する",     name: "published",   widget: "boolean",  default: true }
+
+  # ──────────────────────────────────────────
+  #  新着情報（トップページに表示される短いお知らせ）
+  # ──────────────────────────────────────────
+  - name: "news"
+    label: "新着情報"
+    folder: "news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "タイトル",   name: "title",     widget: "string" }
+      - { label: "日付",       name: "date",      widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "種別",       name: "type",      widget: "select",
+          options: ["お知らせ", "催事情報", "買取強化", "重要"],
+          default: "お知らせ" }
+      - { label: "本文（任意）", name: "body",    widget: "markdown", required: false }
+      - { label: "リンクURL（任意）", name: "url", widget: "string",  required: false, hint: "外部URLまたは /blog/記事名" }
+      - { label: "公開する",   name: "published", widget: "boolean",  default: true }

@@ -521,6 +521,8 @@
       .hd-tel { display: none; }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js.yaml.min.js"></script>
 </head>
 <body>
 
@@ -658,6 +660,34 @@
   </div>
 </section>
 
+<!-- 新着情報 & ブログセクション -->
+<section id="news" style="background: var(--white); padding: 88px 32px;">
+  <div class="sec-in" style="max-width:1180px; margin:0 auto;">
+    <div style="margin-bottom: 72px;">
+      <div class="sec-head" style="margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div>
+          <div class="sec-tag fu">News</div>
+          <h2 class="sec-title fu" style="margin-bottom:0;">新着情報</h2>
+        </div>
+      </div>
+      <div id="newsList" style="border-top: 1px solid var(--border);">
+        <div style="padding:24px 0; text-align:center; color:var(--text-light); font-size:14px;">読み込み中...</div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div>
+          <div class="sec-tag fu">Blog</div>
+          <h2 class="sec-title fu" style="margin-bottom:0;">ブログ</h2>
+        </div>
+        <a href="/blog/" style="font-size:13px; color:var(--green); font-weight:700; text-decoration:none; display:flex; align-items:center; gap:4px;">すべて見る <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      </div>
+      <div id="blogList" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+        <div style="grid-column:1/-1; padding:24px 0; text-align:center; color:var(--text-light); font-size:14px;">読み込み中...</div>
+      </div>
+    </div>
+  </div>
+</section>
 <section id="items">
   <div class="sec-in">
     <div class="sec-head">
@@ -1023,6 +1053,53 @@
     document.getElementById('cf').style.display = 'none';
     document.getElementById('thanks').style.display = 'block';
   });
+</script>
+
+<script>
+(function(){
+  const REPO='catdebag/keiho-kaitori.com';
+  async function fetchMd(folder){
+    try{
+      const r=await fetch('https://api.github.com/repos/'+REPO+'/contents/'+folder);
+      if(!r.ok)return[];
+      const files=await r.json();
+      const mds=files.filter(f=>f.name.endsWith('.md'));
+      const posts=await Promise.all(mds.map(async f=>{
+        const t=await(await fetch(f.download_url)).text();
+        return parse(t,f.name);
+      }));
+      return posts.filter(p=>p&&p.published!==false).sort((a,b)=>new Date(b.date)-new Date(a.date));
+    }catch(e){return[];}
+  }
+  function parse(raw,fn){
+    const m=raw.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)$/);
+    if(!m)return null;
+    try{const meta=jsyaml.load(m[1]);meta.slug=fn.replace(/\.md$/,'');return meta;}catch(e){return null;}
+  }
+  function fmt(d){return d?new Date(d).toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'}):''}
+  const TC={'お知らせ':'#1A5C3A','催事情報':'#B8922A','買取強化':'#246b45','重要':'#c0392b'};
+  async function renderNews(){
+    const el=document.getElementById('newsList');if(!el)return;
+    const items=await fetchMd('news');
+    if(!items.length){el.innerHTML='<div style="padding:24px 0;text-align:center;color:var(--text-light);font-size:13px;">新着情報はまだありません</div>';return;}
+    el.innerHTML=items.slice(0,6).map(item=>{
+      const c=TC[item.type]||'var(--green)';
+      const badge=item.type?'<span style="font-size:10px;font-weight:700;color:'+c+';background:'+c+'18;padding:3px 10px;border-radius:100px;white-space:nowrap;">'+item.type+'</span>':'';
+      const tag=item.url?'a':'div';
+      return'<'+tag+(item.url?' href="'+item.url+'"':'')+' style="display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;"><span style="font-size:12px;color:var(--text-light);white-space:nowrap;">'+fmt(item.date)+'</span>'+badge+'<span style="font-size:14px;font-weight:500;">'+item.title+'</span></'+tag+'>';
+    }).join('');
+  }
+  async function renderBlog(){
+    const el=document.getElementById('blogList');if(!el)return;
+    const posts=await fetchMd('blog');
+    if(!posts.length){el.innerHTML='<div style="grid-column:1/-1;padding:24px 0;text-align:center;color:var(--text-light);font-size:13px;">まだ記事がありません</div>';return;}
+    el.innerHTML=posts.slice(0,3).map(p=>{
+      const th=p.thumbnail?'<img src="'+p.thumbnail+'" alt="'+p.title+'" style="width:100%;height:160px;object-fit:cover;display:block;">':'<div style="width:100%;height:160px;background:linear-gradient(135deg,var(--green-pale),#ddeee5);display:flex;align-items:center;justify-content:center;"></div>';
+      return'<a href="/blog/post.html?slug='+p.slug+'" style="background:var(--cream);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block;">'+th+'<div style="padding:16px 18px 20px;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">'+(p.category?'<span style="font-size:10px;font-weight:700;color:var(--green);background:var(--green-pale);padding:3px 10px;border-radius:100px;">'+p.category+'</span>':'')+'<span style="font-size:11px;color:var(--text-light);">'+fmt(p.date)+'</span></div><div style="font-size:14px;font-weight:700;color:var(--text);line-height:1.6;">'+p.title+'</div></div></a>';
+    }).join('');
+  }
+  renderNews();renderBlog();
+})();
 </script>
 </body>
 </html>

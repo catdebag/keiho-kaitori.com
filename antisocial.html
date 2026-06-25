@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>反社排除方針・免責事項｜株式会社KEIHO</title>
+  <meta name="description" content="株式会社KEIHOの反社会的勢力排除方針および免責事項をご確認いただけます。">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="canonical" href="https://keiho-kaitori.com/antisocial.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:      #1A5C3A;
+      --green-dark: #123d27;
+      --green-mid:  #246b45;
+      --green-soft: #e8f2ec;
+      --green-pale: #f2f8f4;
+      --gold:       #B8922A;
+      --gold-light: #D4AA50;
+      --cream:      #FAFAF6;
+      --white:      #FFFFFF;
+      --text:       #1e2b22;
+      --text-mid:   #4a5e52;
+      --text-light: #7a8f82;
+      --border:     #d8e6dc;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--white);
+      border-bottom: 2px solid var(--green-soft);
+      box-shadow: 0 2px 16px rgba(26,92,58,0.07);
+    }
+    .hd-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 28px;
+      height: 72px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-img { height: 44px; width: auto; display: block; object-fit: contain; }
+    .logo-fallback { display: flex; align-items: center; gap: 14px; }
+    .logo-badge {
+      width: 44px; height: 44px; background: var(--green); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+    }
+    .logo-badge::after {
+      content: ''; position: absolute; top: -6px; right: -6px;
+      width: 20px; height: 20px; background: var(--gold); border-radius: 50%; opacity: 0.7;
+    }
+    .logo-badge span { font-family: 'Noto Serif JP', serif; font-size: 24px; font-weight: 700; color: var(--white); position: relative; z-index: 1; }
+    .logo-words .en { font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: 1px; }
+    .logo-words .ja { font-size: 10px; color: var(--text-light); }
+    .hd-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--green); font-size: 13px; font-weight: 700; text-decoration: none;
+      padding: 8px 16px; border: 1.5px solid var(--green); border-radius: 6px;
+      transition: background .2s, color .2s;
+    }
+    .hd-back:hover { background: var(--green); color: var(--white); }
+
+    /* ========== PAGE HERO ========== */
+    .page-hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      padding: 64px 28px 56px;
+      text-align: center;
+    }
+    .page-hero .tag {
+      display: inline-block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold-light); margin-bottom: 14px;
+    }
+    .page-hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 700; color: var(--white); line-height: 1.4;
+    }
+    .page-hero p { font-size: 13px; color: rgba(255,255,255,0.65); margin-top: 12px; }
+
+    /* ========== CONTENT ========== */
+    .content-wrap {
+      max-width: 800px; margin: 0 auto; padding: 64px 28px 80px;
+    }
+    .policy-section { margin-bottom: 44px; }
+    .policy-section h2 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 17px; font-weight: 700; color: var(--green-dark);
+      border-left: 4px solid var(--gold); padding-left: 14px;
+      margin-bottom: 16px; line-height: 1.5;
+    }
+    .policy-section p {
+      font-size: 14px; color: var(--text-mid); line-height: 1.95; margin-bottom: 12px;
+    }
+    .policy-section ul {
+      margin: 12px 0 12px 20px;
+    }
+    .policy-section ul li {
+      font-size: 14px; color: var(--text-mid); line-height: 1.9; margin-bottom: 4px;
+    }
+    .updated {
+      font-size: 12px; color: var(--text-light); margin-bottom: 40px;
+      padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    }
+    .alert-box {
+      background: #fff8f0; border: 1.5px solid #e8a456;
+      border-radius: 12px; padding: 22px 26px; margin: 20px 0;
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .alert-box svg { flex-shrink: 0; margin-top: 2px; }
+    .alert-box p { font-size: 14px; color: #7a4a10; line-height: 1.9; margin-bottom: 0; }
+    .divider {
+      border: none; border-top: 2px solid var(--border);
+      margin: 48px 0;
+    }
+
+    /* ========== FOOTER ========== */
+    footer { background: var(--green-dark); color: rgba(255,255,255,0.7); padding: 36px 28px 28px; }
+    .ft-in { max-width: 1160px; margin: 0 auto; }
+    .ft-links { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 16px; }
+    .ft-links a { color: rgba(255,255,255,0.6); font-size: 13px; text-decoration: none; }
+    .ft-links a:hover { color: var(--gold-light); }
+    .ft-copy { font-size: 11px; color: rgba(255,255,255,0.25); padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="hd-inner">
+    <a href="/" class="logo">
+      <img src="images/logo.png" alt="株式会社KEIHO" class="logo-img"
+           onload="this.nextElementSibling.style.display='none';"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+      <div class="logo-fallback" style="display:flex;">
+        <div class="logo-badge"><span>K</span></div>
+      </div>
+      <div class="logo-words">
+        <div class="en">KEIHO</div>
+        <div class="ja">株式会社 KEIHO</div>
+      </div>
+    </a>
+    <a href="/" class="hd-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      トップページへ戻る
+    </a>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="tag">Compliance</div>
+  <h1>反社会的勢力排除方針・免責事項</h1>
+  <p>当社のコンプライアンス方針および免責規定について</p>
+</div>
+
+<div class="content-wrap">
+  <p class="updated">制定日：2026年6月　株式会社KEIHO</p>
+
+  <!-- ========== 反社排除 ========== -->
+  <div class="policy-section">
+    <h2>反社会的勢力排除方針</h2>
+    <p>株式会社KEIHO（以下「当社」といいます）は、健全な企業活動を営むため、反社会的勢力との関係を一切排除することを宣言します。</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>第1条（基本方針）</h2>
+    <p>当社は、暴力団、暴力団員、暴力団準構成員、暴力団関係企業、総会屋、社会運動等標榜ゴロ、特殊知能暴力集団その他これらに準じる者（以下総称して「反社会的勢力」といいます）との一切の関係を遮断・拒絶します。</p>
+    <div class="alert-box">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4831a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>反社会的勢力に該当すると判断した場合は、取引をお断りし、直ちに警察・暴力追放運動推進センターその他の関係機関に通報します。</p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <h2>第2条（禁止事項）</h2>
+    <p>当社は、反社会的勢力に対して以下の行為を行いません。また、これらを第三者に行わせることも禁じます。</p>
+    <ul>
+      <li>資金・便宜等の提供</li>
+      <li>不正・不当な取引の実施</li>
+      <li>恐喝・脅迫・暴力行為への屈服</li>
+      <li>その他社会的・道義的に非難される関係の維持</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <h2>第3条（不当要求への対応）</h2>
+    <p>反社会的勢力による不当要求が発生した場合、当社は毅然とした態度でこれを拒絶します。必要に応じて、警察・弁護士等の外部専門機関と連携して対応いたします。</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ========== 免責事項 ========== -->
+  <div class="policy-section">
+    <h2>免責事項</h2>
+    <p>当社ウェブサイトおよびサービスをご利用いただくにあたり、以下の事項をご了承ください。</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>第4条（査定価格について）</h2>
+    <p>当社の査定価格は、貴金属相場・宝石市況・ブランド品の需給状況・お品物の状態等の諸条件により変動します。カタログ等に記載の参考価格や市場公表価格と異なる場合がありますが、当社はこれについて一切の責任を負いかねます。</p>
+    <p>査定結果はあくまでも目安であり、お客様が売却を強制されるものではありません。</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>第5条（情報の正確性）</h2>
+    <p>当社は、ウェブサイト上の情報を正確に保つよう努めておりますが、掲載内容の完全性・正確性・最新性を保証するものではありません。情報の誤りにより生じたいかなる損害についても、当社は責任を負いかねます。</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>第6条（サービス中断・変更）</h2>
+    <p>当社は、システムメンテナンス・不可抗力・その他の事情により、予告なくウェブサイトの運営を中断・変更・終了する場合があります。これにより生じた損害について、当社は責任を負いかねます。</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>第7条（リンク先について）</h2>
+    <p>当社ウェブサイトからリンクする外部サイトの内容については、当社は一切の責任を負いかねます。外部サイトの利用はお客様自身の判断と責任において行ってください。</p>
+  </div>
+
+  <div class="policy-section">
+    <h2>第8条（準拠法・管轄裁判所）</h2>
+    <p>本方針の解釈・適用は日本法に準拠します。本方針に関する紛争については、さいたま地方裁判所を第一審の専属的合意管轄裁判所とします。</p>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-in">
+    <div class="ft-links">
+      <a href="/">トップページ</a>
+      <a href="/privacy.html">プライバシーポリシー</a>
+      <a href="/antisocial.html">反社排除・免責事項</a>
+    </div>
+    <div class="ft-copy">Copyright &copy; 2026 株式会社KEIHO All Rights Reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

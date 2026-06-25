@@ -117,6 +117,14 @@
     }
     .btn-hd:hover { background: var(--green-mid); }
 
+    .pc-nav { display: flex; align-items: center; gap: 4px; }
+    .pc-nav a {
+      color: var(--text-mid); font-size: 13px; font-weight: 500;
+      text-decoration: none; padding: 6px 10px; border-radius: 6px;
+      transition: background .2s, color .2s; white-space: nowrap;
+    }
+    .pc-nav a:hover { background: var(--green-soft); color: var(--green); }
+
     .ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
     .ham span { display: block; width: 26px; height: 2px; background: var(--green); border-radius: 2px; transition: all .3s; }
     .ham.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -231,7 +239,7 @@
     .hero-card-list i { color: var(--green); margin-top: 2px; font-size: 13px; flex-shrink: 0; }
 
     /* ========== SECTION BASE ========== */
-    section { padding: 80px 28px; }
+    section { padding: 80px 28px; scroll-margin-top: 80px; }
     .sec-in { max-width: 1160px; margin: 0 auto; }
     .sec-head { margin-bottom: 52px; }
     .sec-tag {
@@ -500,6 +508,7 @@
 
     /* ========== RESPONSIVE ========== */
     @media (max-width: 900px) {
+      .pc-nav { display: none; }
       .hero-inner { grid-template-columns: 1fr; }
       .hero-card { display: none; }
       .items-grid { grid-template-columns: repeat(2, 1fr); }
@@ -573,6 +582,14 @@
       </div>
     </a>
     <div class="hd-right">
+      <nav class="pc-nav" aria-label="メインナビゲーション">
+        <a href="#items">取扱品目</a>
+        <a href="#flow">買取の流れ</a>
+        <a href="#reasons">選ばれる理由</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#company">会社概要</a>
+        <a href="#contact">お問い合わせ</a>
+      </nav>
       <a href="tel:09057037929" class="hd-tel">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--gold);flex-shrink:0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l1.27-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/></svg>
         <div><span class="tl">無料相談・お問い合わせ</span><span class="num">090-5703-7929</span></div>
@@ -668,34 +685,6 @@
   </div>
 </section>
 
-<!-- 新着情報 & ブログセクション -->
-<section id="news" style="background: var(--white); padding: 88px 32px;">
-  <div class="sec-in" style="max-width:1180px; margin:0 auto;">
-    <div style="margin-bottom: 72px;">
-      <div class="sec-head" style="margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-        <div>
-          <div class="sec-tag fu">News</div>
-          <h2 class="sec-title fu" style="margin-bottom:0;">新着情報</h2>
-        </div>
-      </div>
-      <div id="newsList" style="border-top: 1px solid var(--border);">
-        <div style="padding:24px 0; text-align:center; color:var(--text-light); font-size:14px;">読み込み中...</div>
-      </div>
-    </div>
-    <div>
-      <div class="sec-head" style="margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-        <div>
-          <div class="sec-tag fu">Blog</div>
-          <h2 class="sec-title fu" style="margin-bottom:0;">ブログ</h2>
-        </div>
-        <a href="/blog/" style="font-size:13px; color:var(--green); font-weight:700; text-decoration:none; display:flex; align-items:center; gap:4px;">すべて見る <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
-      </div>
-      <div id="blogList" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
-        <div style="grid-column:1/-1; padding:24px 0; text-align:center; color:var(--text-light); font-size:14px;">読み込み中...</div>
-      </div>
-    </div>
-  </div>
-</section>
 <section id="items">
   <div class="sec-in">
     <div class="sec-head">
@@ -715,7 +704,7 @@
         icons/brand.png       → ブランド品
         icons/stamp.png       → 切手・テレカ
         icons/antique.png     → 骨董・古美術
-        icons/other.png       → その他貴重品
+        icons/imitation.png   → メッキ・イミテーションアクセサリー・その他貴重品（imitation.pngを流用）
       ================================================
     -->
     <div class="items-grid">
@@ -741,11 +730,11 @@
         <p>エメラルド・ルビー・サファイアなどのカラーストーンが入ったジュエリーも査定対象です。ルース（裸石）もお買取りできます。</p>
       </div>
 
-      <!-- ブランド時計 -->
+      <!-- 腕時計・懐中時計 -->
       <div class="item-card fu">
-        <div class="item-ico"><img src="icons/watch.png" alt="ブランド時計"></div>
-        <h3>ブランド時計</h3>
-        <p>ロレックス・オメガ・カルティエなど国内外のブランド時計をお買取りします。動かない時計・古い時計もご相談ください。</p>
+        <div class="item-ico"><img src="icons/watch.png" alt="腕時計・懐中時計"></div>
+        <h3>腕時計・懐中時計</h3>
+        <p>ロレックス・オメガなどのブランド時計から、懐中時計・アンティーク時計まで幅広くお買取りします。動かない時計・壊れた時計もお気軽にご相談ください。</p>
       </div>
 
       <!-- ブランド品 -->
@@ -755,25 +744,25 @@
         <p>ルイ・ヴィトン・シャネル・エルメスなどのバッグ・財布・小物をお買取りします。傷や汚れがあってもお気軽にご相談ください。</p>
       </div>
 
-      <!-- 切手・テレカ -->
+      <!-- 金券類 -->
       <div class="item-card fu">
-        <div class="item-ico"><img src="icons/stamp.png" alt="切手・テレカ"></div>
-        <h3>切手・テレカ</h3>
-        <p>未使用切手・切手シート・プレミアム切手を高価買取中です。古い切手ほど価値が高いものもございます。まとめてお持ちください。</p>
+        <div class="item-ico"><img src="icons/stamp.png" alt="金券類"></div>
+        <h3>金券類</h3>
+        <p>切手・テレホンカード・JR回数券・クオカードなど金券類全般をお買取りします。未使用・まとめてお持ちいただくほど高価買取になります。</p>
       </div>
 
       <!-- 骨董・古美術 -->
       <div class="item-card fu">
         <div class="item-ico"><img src="icons/antique.png" alt="骨董・古美術"></div>
         <h3>骨董・古美術</h3>
-        <p>掛け軸・陶磁器・茶道具・古銭など骨董品全般をお買取りします。価値がわからないものでも、まずはご相談ください。</p>
+        <p>掛け軸・陶磁器・茶道具・古銭・絵画・海外画など骨董品全般をお買取りします。価値がわからないものでも、まずはご相談ください。</p>
       </div>
 
-      <!-- その他貴重品 -->
+      <!-- メッキ・イミテーションアクセサリー・その他貴重品 -->
       <div class="item-card fu">
-        <div class="item-ico"><img src="icons/other.png" alt="その他貴重品"></div>
-        <h3>その他貴重品</h3>
-        <p>上記以外のお品物もお気軽にご相談ください。金属素材のもの・年代物・ブランド品など、お値段がつく可能性があります。</p>
+        <div class="item-ico"><img src="icons/imitation.png" alt="メッキ・イミテーションアクセサリー・その他貴重品"></div>
+        <h3>メッキ・イミテーションアクセサリー・その他貴重品</h3>
+        <p>貴金属でないアクセサリー（メッキ・イミテーション）もまとめてお買取りします。100gおまとめで1,000円〜を目安にご提示。ブローチ・ネックレス・指輪のほか、上記以外のお品物もお気軽にご相談ください。お値段がつく可能性があります。</p>
       </div>
 
     </div>
@@ -797,7 +786,8 @@
       <div class="flow-card fu"><div class="flow-num-wrap"><span class="step-label">STEP</span><span class="step-num">3</span></div><h3>金額のご確認・ご納得</h3><p>査定額と根拠をわかりやすくご説明します。ご納得いただけた場合のみお取引を進めます。無理な勧誘は一切ありません。</p></div>
       <div class="flow-card fu"><div class="flow-num-wrap"><span class="step-label">STEP</span><span class="step-num">4</span></div><h3>その場で現金お支払い</h3><p>ご同意いただいたその場で現金をお渡しします。お振込みは行いません。本人確認書類（免許証・マイナンバーカード等）をご持参ください。</p></div>
     </div>
-    <div class="flow-note fu"><strong>本人確認書類について：</strong>古物営業法に基づき、お取引の際は本人確認書類（運転免許証・マイナンバーカード・健康保険証等）のご提示が必要です。</div>
+    <div class="flow-note fu"><strong>本人確認書類について：</strong>古物営業法に基づき、お取引の際は本人確認書類（運転免許証・マイナンバーカード・パスポートのいずれか1点）のご提示が必要です。</div>
+    <div class="flow-note fu" style="margin-top:12px;"><strong>高額品・大型品・法令関連品について：</strong>刀剣類など持ち運びに法令上の注意が必要なお品物や、高額・大型のお品物については、事前にスタッフへご相談ください。スタッフが適切に対応いたします。</div>
   </div>
 </section>
 
@@ -898,7 +888,36 @@
       <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>当日その場で現金をもらえますか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">はい、ご同意いただいたその場で現金をお渡しします。お振込みや後日払いは行っておりません。</div></div></div>
       <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>未成年でも利用できますか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">未成年の方の買取には、保護者の方の同意書が必要です。ご来場の際は保護者の方と一緒にお越しいただくか、事前にご相談ください。</div></div></div>
       <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>どんなものでも持っていけばいいですか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">金・プラチナ・銀・ダイヤモンド・宝飾品・時計・ブランド品・切手・骨董品などが主な対象です。「これは買取できる？」と迷ったらまずお持ちください。</div></div></div>
-      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>本人確認は必要ですか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">古物営業法に基づき、お取引の際は本人確認書類（運転免許証・マイナンバーカード・健康保険証など）のご提示をお願いしています。</div></div></div>
+      <div class="faq-item fu"><button class="faq-btn"><span class="faq-q-badge">Q</span>本人確認は必要ですか？<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--green);margin-left:auto;flex-shrink:0;transition:transform .3s;" class="arr"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-ans"><div class="faq-ans-in">古物営業法に基づき、お取引の際は本人確認書類（運転免許証・マイナンバーカード・パスポートのいずれか1点）のご提示をお願いしています。</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 新着情報 & ブログセクション -->
+<section id="news" style="background: var(--white); padding: 88px 32px;">
+  <div class="sec-in" style="max-width:1180px; margin:0 auto;">
+    <div style="margin-bottom: 72px;">
+      <div class="sec-head" style="margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div>
+          <div class="sec-tag fu">News</div>
+          <h2 class="sec-title fu" style="margin-bottom:0;">新着情報</h2>
+        </div>
+      </div>
+      <div id="newsList" style="border-top: 1px solid var(--border);">
+        <div style="padding:24px 0; text-align:center; color:var(--text-light); font-size:14px;">読み込み中...</div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-head" style="margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+        <div>
+          <div class="sec-tag fu">Blog</div>
+          <h2 class="sec-title fu" style="margin-bottom:0;">ブログ</h2>
+        </div>
+        <a href="/blog/" style="font-size:13px; color:var(--green); font-weight:700; text-decoration:none; display:flex; align-items:center; gap:4px;">すべて見る <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
+      </div>
+      <div id="blogList" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+        <div style="grid-column:1/-1; padding:24px 0; text-align:center; color:var(--text-light); font-size:14px;">読み込み中...</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1040,7 +1059,20 @@
   const ham = document.getElementById('ham');
   const nav = document.getElementById('sp-nav');
   ham.addEventListener('click', () => { ham.classList.toggle('open'); nav.classList.toggle('open'); });
-  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { ham.classList.remove('open'); nav.classList.remove('open'); }));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', (e) => {
+    ham.classList.remove('open');
+    nav.classList.remove('open');
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const offset = 80;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  }));
 
   document.querySelectorAll('.faq-btn').forEach(btn => {
     btn.addEventListener('click', () => {

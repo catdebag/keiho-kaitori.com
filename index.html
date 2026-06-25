@@ -54,7 +54,7 @@
      * ============================================================
      */
 
-    html { scroll-behavior: smooth; }
+    /* scroll-behavior: smooth はJS側で制御するため削除 */
     body {
       font-family: 'Noto Sans JP', sans-serif;
       color: var(--text);
@@ -525,21 +525,7 @@
       .sp-nav { display: block; }
       section { padding: 60px 20px; }
       .hero { min-height: auto; }
-      .hero-inner { padding: 44px 20px 52px; }
-      .hero::before {
-    background: linear-gradient(
-      180deg,
-      rgba(255,255,255,0.88) 0%,
-      rgba(255,255,255,0.80) 60%,
-      rgba(255,255,255,0.50) 100%
-    );
-  }
-  .hero h1 { font-size: 26px; }
-  .hero-sub { font-size: 13px; line-height: 1.8; margin-bottom: 24px; }
-  .hero-btns { flex-direction: column; gap: 10px; }
-  .btn-gold, .btn-outline-w { width: 100%; justify-content: center; padding: 13px 20px; font-size: 14px; }
-  .hero-chips { gap: 8px; }
-  .chip { font-size: 11px; padding: 5px 10px; }
+      .hero-inner { padding: 60px 20px 64px; }
       .items-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .flow-row { grid-template-columns: 1fr; }
       .ft-top { grid-template-columns: 1fr; gap: 24px; }
@@ -786,7 +772,7 @@
   </div>
 </section>
 
-<section id="news-top" style="background: var(--white); padding: 48px 32px; scroll-margin-top: 80px;">
+<section id="news-top" style="display:none; background: var(--white); padding: 48px 32px; scroll-margin-top: 80px;">
   <div class="sec-in" style="max-width:1180px; margin:0 auto;">
     <div class="sec-head" style="margin-bottom:32px; display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px;">
       <div>
@@ -1085,10 +1071,11 @@
       const target = document.querySelector(href);
       if (target) {
         const offset = 80;
-setTimeout(() => {
-  const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-  window.scrollTo({ top, behavior: 'smooth' });
-}, 50);
+        // sp-navのmax-heightアニメーション(0.35s)完了後に座標を再計算
+        setTimeout(() => {
+          const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }, 400);
       }
     }
   }));
@@ -1116,7 +1103,7 @@ setTimeout(() => {
 
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-yaml@4/dist/js.yaml.min.js"></script>
-<script>
+<script defer>
 (function(){
   const REPO='catdebag/keiho-kaitori.com';
   async function fetchMd(folder){

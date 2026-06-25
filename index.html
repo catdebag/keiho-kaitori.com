@@ -1116,7 +1116,7 @@
     }catch(e){return[];}
   }
   function parse(raw,fn){
-    const m=raw.match(/^---\n([\s\S]+?)\n---\n([\s\S]*)$/);
+    cconst m = raw.match(/^---\r?\n([\s\S]+?)\n---\r?\n?([\s\S]*)$/);
     if(!m)return null;
     try{const meta=jsyaml.load(m[1]);meta.slug=fn.replace(/\.md$/,'');return meta;}catch(e){return null;}
   }

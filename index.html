@@ -525,7 +525,21 @@
       .sp-nav { display: block; }
       section { padding: 60px 20px; }
       .hero { min-height: auto; }
-      .hero-inner { padding: 60px 20px 64px; }
+      .hero-inner { padding: 44px 20px 52px; }
+      .hero::before {
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.88) 0%,
+      rgba(255,255,255,0.80) 60%,
+      rgba(255,255,255,0.50) 100%
+    );
+  }
+  .hero h1 { font-size: 26px; }
+  .hero-sub { font-size: 13px; line-height: 1.8; margin-bottom: 24px; }
+  .hero-btns { flex-direction: column; gap: 10px; }
+  .btn-gold, .btn-outline-w { width: 100%; justify-content: center; padding: 13px 20px; font-size: 14px; }
+  .hero-chips { gap: 8px; }
+  .chip { font-size: 11px; padding: 5px 10px; }
       .items-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .flow-row { grid-template-columns: 1fr; }
       .ft-top { grid-template-columns: 1fr; gap: 24px; }

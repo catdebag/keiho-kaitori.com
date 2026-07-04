@@ -1045,10 +1045,25 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.fu').forEach(el => io.observe(el));
 
-  document.getElementById('cf').addEventListener('submit', e => {
+  document.getElementById('cf').addEventListener('submit', async e => {
     e.preventDefault();
-    document.getElementById('cf').style.display = 'none';
-    document.getElementById('thanks').style.display = 'block';
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('thanks').style.display = 'block';
+      } else {
+        alert('送信に失敗しました。お手数ですが、お電話にてご連絡ください。');
+      }
+    } catch (err) {
+      alert('送信に失敗しました。お手数ですが、お電話にてご連絡ください。');
+    }
   });
 </script>
 

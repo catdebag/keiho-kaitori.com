@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://keiho-kaitori.com/sitemap.xml

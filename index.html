@@ -66,6 +66,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ========== BLOG GRID ========== */
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 900px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .blog-grid { grid-template-columns: 1fr; } }
+
     /* ========== HEADER ========== */
     .logo-img {
       height: 44px;
@@ -1210,7 +1215,7 @@
         </div>
         <a href="/blog/" style="font-size:13px; color:var(--green); font-weight:700; text-decoration:none; display:flex; align-items:center; gap:4px;">すべて見る <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></a>
       </div>
-      <div id="blogList" style="display:grid; grid-template-columns:repeat(3,1fr); gap:20px;">
+      <div id="blogList" class="blog-grid">
 <!-- BUILD:BLOG_START -->
 <a href="/blog/2026-06-23-gold-price/" style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block;"><div style="padding:20px 20px 22px;"><div style="font-size:11px;color:var(--text-light);margin-bottom:10px;">2026年6月23日　&middot;　買取知識</div><div style="font-size:14.5px;font-weight:700;color:var(--text);line-height:1.65;margin-bottom:9px;">金の買取価格について——相場と査定のポイントを解説</div><div style="font-size:12.5px;color:var(--text-light);line-height:1.8;">金の買取価格は、国際的な金相場（スポット価格）をもとに毎日変動します。自宅に眠っている金製品がある方は、ぜひ一度査定にお持ちください。</div></div></a>
 <a href="/blog/2026-06-15-watch/" style="background:var(--white);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block;"><div style="padding:20px 20px 22px;"><div style="font-size:11px;color:var(--text-light);margin-bottom:10px;">2026年6月15日　&middot;　買取知識</div><div style="font-size:14.5px;font-weight:700;color:var(--text);line-height:1.65;margin-bottom:9px;">動かない時計でも買取できます——腕時計・懐中時計の査定について</div><div style="font-size:12.5px;color:var(--text-light);line-height:1.8;">「壊れているから売れない」と思っていませんか？実は時計は動かない状態でも、素材や希少性によって買取できるケースが多くあります。まずはお気軽にご相談ください。</div></div></a>

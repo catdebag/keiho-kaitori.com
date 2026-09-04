@@ -2,36 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://keiho-kaitori.com/</loc>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://keiho-kaitori.com/blog/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-06-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://keiho-kaitori.com/blog/post.html?slug=2026-06-10-imitation</loc>
+    <loc>https://keiho-kaitori.com/news/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://keiho-kaitori.com/blog/2026-06-23-gold-price/</loc>
+    <lastmod>2026-06-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://keiho-kaitori.com/blog/post.html?slug=2026-06-15-watch</loc>
+    <loc>https://keiho-kaitori.com/blog/2026-06-15-watch/</loc>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://keiho-kaitori.com/blog/post.html?slug=2026-06-23-gold-price</loc>
+    <loc>https://keiho-kaitori.com/blog/2026-06-10-imitation/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://keiho-kaitori.com/news/2026-06-24-open/</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://keiho-kaitori.com/news/2026-06-20-saiji/</loc>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://keiho-kaitori.com/privacy.html</loc>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://keiho-kaitori.com/antisocial.html</loc>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

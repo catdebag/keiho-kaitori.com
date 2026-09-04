@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# 旧URLの互換ページ（新URLへ転送するだけの中身なので巡回不要）
+Disallow: /blog/post.html
+# CMS管理画面
+Disallow: /admin/
+Disallow: /webauth.html
+
 Sitemap: https://keiho-kaitori.com/sitemap.xml

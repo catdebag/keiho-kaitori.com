@@ -58,6 +58,26 @@ python3 -m http.server 8791
 （GitHub Pages は 301 を返せないため JS 転送 + canonical + noindex）。
 既に貼られたリンクのために残しています。
 
+## 公開されるもの / されないもの
+
+GitHub Pages は `path: '.'` でリポジトリ全体を配信するため、**何もしないと
+README や原稿の Markdown までURLで読めてしまう。** デプロイ時に
+「Strip internal files from the artifact」ステップで下記を成果物から除外している。
+
+| 除外 | 理由 |
+|---|---|
+| `README.md` | 社内向けの申し送り（本ファイル） |
+| `tools/` | ビルドスクリプト。実行はCI側で完結する |
+| `netlify.toml` | Netlify用。GitHub Pages では未使用 |
+| `blog/*.md` `news/*.md` | 原稿。記事ページ生成後は不要。**`published: false` の下書きが読まれるのを防ぐ意味が大きい** |
+
+`.github/` は GitHub Pages が元から配信しない。
+
+**社内メモ・作業経緯・未確定事項は、配信されるファイル（`*.html` / `admin/config.yml`
+/ `robots.txt` など）にコメントとして書かないこと。** 静的サイトなので
+HTML・CSS・JS のコメントはすべてそのまま閲覧者に見える。書くならこの README か
+コミットメッセージに残す。
+
 ## 未対応・注意点
 
 - `admin/`（Decap CMS）は `backend: name: github` のみで OAuth プロバイダ未設定のため

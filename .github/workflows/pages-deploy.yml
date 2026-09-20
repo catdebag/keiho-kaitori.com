@@ -29,10 +29,23 @@ jobs:
         with:
           python-version: '3.12'
 
-      # blog/*.md, news/*.md から記事ページ・一覧・sitemap.xml を生成する。
-      # CMS や GitHub 上で .md を追加するだけで記事ページが増える。
       - name: Build static pages
         run: python3 tools/build.py
+
+      # 公開対象から社内向けファイルを除外する。
+      # path: '.' は .git と .github 以外を全部配信するため、除外しないと
+      # README や原稿 Markdown がそのままURLで読める状態になる。
+      # ビルドの後に実行すること（build.py が *.md を入力に使うため）。
+      - name: Strip internal files from the artifact
+        run: |
+          set -eux
+          rm -f  README.md netlify.toml
+          rm -rf tools
+          find blog news -maxdepth 1 -name '*.md' -delete
+          # 除外漏れの検査：公開してはいけないものが残っていたら失敗させる
+          test ! -e README.md
+          test ! -e tools
+          test -z "$(find blog news -maxdepth 1 -name '*.md')"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
